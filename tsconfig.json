@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "jsx": "react",
+    "types": ["node", "dom", "./typings.d.ts"]
+  },
+  "include": ["src/**/*.tsx", "src/**/*.ts", "typings.d.ts"]
+}
