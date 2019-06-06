@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel src/index.html"
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
