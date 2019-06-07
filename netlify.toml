@@ -5,7 +5,7 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "http://api.denocn.org/*"
+  to = "http://api.denocn.org/:splat"
   status = 200
   force = true
 
