@@ -11,13 +11,21 @@ type RouteDef = {
 const views: any = require("./views/**/*.tsx");
 
 function getRoutes(views: any, parent: string) {
-  const routeNames = Object.keys(views);
+  const routeNames = Object.keys(views).filter(name => !name.startsWith("_"));
   routeNames.forEach(name => {
     const view = views[name];
     const viewComponent = view.default;
     if (viewComponent) {
+      let path;
+      if (name === "index") {
+        path = parent;
+      } else if (name.startsWith("$")) {
+        path = parent + ":" + name.slice(1);
+      } else {
+        path = parent + name;
+      }
       const route = {
-        path: name === "index" ? parent : parent + name,
+        path,
         component: viewComponent,
         exact: name === "index"
       };

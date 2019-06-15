@@ -1,4 +1,6 @@
 .layout-default {
+  width: 100%;
+  padding-bottom: 88px;
   #main-wrapper {
     margin: auto;
     flex: 1;
@@ -7,26 +9,24 @@
     max-width: 1400px;
     flex-direction: row;
     width: 90%;
-    #content {
+    > .content {
       flex: 1;
     }
-    #side {
+    .side {
       width: 290px;
       min-width: 200px;
       margin-left: 20px;
     }
   }
 
-
-@media (max-width: 1000px) {
+  @media (max-width: 1000px) {
     #main-wrapper {
       width: 100%;
       flex-direction: column;
-      #side {
+      .side {
         margin-left: 0px;
         width: 100%;
       }
     }
   }
-  
 }
