@@ -2,6 +2,7 @@ import { observer } from "mobx-react";
 import React from "react";
 import DefaultLayout from "../../components/layouts/default";
 import BasePanel from "../../components/panels/Base";
+import FriendsLinkPanel from "../../components/panels/FriendsLink";
 import UserInfoPanel from "../../components/panels/UserInfo";
 import userStore from "../../store/user";
 import "./index.less";
@@ -27,6 +28,7 @@ export default class Home extends DefaultLayout {
     return (
       <>
         <UserInfoPanel user={userStore.info} />
+        <FriendsLinkPanel />
       </>
     );
   }

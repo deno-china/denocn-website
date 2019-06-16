@@ -3,7 +3,10 @@ import Footer from "../Footer";
 import Header from "../Header";
 import "./default.less";
 
-export default abstract class DefaultLayout extends Component {
+export default abstract class DefaultLayout<P = any, S = any> extends Component<
+  P,
+  S
+> {
   render() {
     return (
       <div className="layout-default">

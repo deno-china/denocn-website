@@ -49,7 +49,12 @@ getRoutes(views, "/");
 @observer
 export class ViewsRouter extends Component<any, {}> {
   readonly state = {
-    routes
+    routes: routes.sort((a, b) => {
+      // 带有exact的排在最前面
+      if (a.exact) return -1;
+      // 带有参数的路由排在后面
+      if (a.path.indexOf("/:") > -1) return 1;
+    })
   };
 
   render() {
