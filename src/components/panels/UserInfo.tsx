@@ -1,15 +1,15 @@
 import React, { FunctionComponent } from "react";
+import { Link } from "react-router-dom";
 import { UserModel } from "../../models/User";
 import BasePanel from "./Base";
 import "./UserInfo.less";
-import { Link } from "react-router-dom";
 
 interface userInfoPanelProps {
   user: UserModel;
 }
 
 const UserInfoPanel: FunctionComponent<userInfoPanelProps> = props => {
-  return (
+  return props.user ? (
     <BasePanel className="panel-user-info" header="用户">
       <Link to={`/user/${props.user.id}`}>
         <img src={props.user.avatar} alt="" />
@@ -23,6 +23,10 @@ const UserInfoPanel: FunctionComponent<userInfoPanelProps> = props => {
         </div>
       </div>
       <div className="bio">“ {props.user.signature} ”</div>
+    </BasePanel>
+  ) : (
+    <BasePanel className="panel-user-info" header="用户">
+      <a href="/api/user/login">登录</a>
     </BasePanel>
   );
 };
