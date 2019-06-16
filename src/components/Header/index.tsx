@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import logo from "../../assets/imgs/logo.svg";
 import "./index.less";
 import { Link } from "react-router-dom";
+import userStore from "../../store/user";
 
 const Header: FunctionComponent = () => {
   return (
@@ -19,8 +20,9 @@ const Header: FunctionComponent = () => {
             官网
           </a>
           <Link to="/about">关于</Link>
-          <a href="/api/user/login">登录</a>
-          <a href="/api/user/logout">退出</a>
+          {
+            userStore.info && userStore.info.id ? <a href="/api/user/logout">退出</a> : <a href="/api/user/login">登录</a>
+          }
         </nav>
       </div>
     </header>
