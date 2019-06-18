@@ -23,10 +23,12 @@ const UserInfoPanel: FunctionComponent<userInfoPanelProps> = props => {
         </div>
       </div>
       <div className="bio">“ {props.user.signature} ”</div>
+      <Link to={'/publish'} className="btn green">发布新话题</Link>
     </BasePanel>
   ) : (
-    <BasePanel className="panel-user-info" header="用户">
-      <a href="/api/user/login">登录</a>
+    <BasePanel className="panel-user-info" header="DENOCN：Deno 开源技术社区">
+      <p>您可以</p>
+      <a className="btn green" href="/api/user/login">通过github登录</a>
     </BasePanel>
   );
 };
