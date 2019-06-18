@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Footer from "../Footer";
-import Header from "../Header";
+import Footer from "../footer";
+import Header from "../header";
 import "./default.less";
 
 export default abstract class DefaultLayout<P = any, S = any> extends Component<

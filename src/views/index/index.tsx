@@ -1,12 +1,13 @@
 import { observer } from "mobx-react";
 import React from "react";
 import DefaultLayout from "../../components/layouts/default";
-import BasePanel from "../../components/panels/Base";
-import FriendsLinkPanel from "../../components/panels/FriendsLink";
-import UserInfoPanel from "../../components/panels/UserInfo";
+import BasePanel from "../../components/panels/base-panel";
+import FriendsLinkPanel from "../../components/panels/friends-link";
+import QQGroupPanel from "../../components/panels/qq-group";
+import UserInfoPanel from "../../components/panels/user-info";
 import userStore from "../../store/user";
 import "./index.less";
-import Topic from "./_Topic";
+import Topic from "./_topic";
 
 @observer
 export default class Home extends DefaultLayout {
@@ -14,7 +15,7 @@ export default class Home extends DefaultLayout {
     const arr = [1, 2, 3, 4, 5, 6, 7];
     return (
       <div className="page-index">
-        <BasePanel className="topics" header={this.renderHeader()}>
+        <BasePanel white className="topics" header={this.renderHeader()}>
           <div className="list">
             {arr.map(i => (
               <Topic key={i} />
@@ -29,6 +30,7 @@ export default class Home extends DefaultLayout {
       <>
         <UserInfoPanel user={userStore.info} />
         <FriendsLinkPanel />
+        <QQGroupPanel />
       </>
     );
   }

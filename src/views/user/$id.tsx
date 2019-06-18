@@ -2,8 +2,8 @@ import React from "react";
 import { RouteComponentProps } from "react-router";
 import "reflect-metadata";
 import DefaultLayout from "../../components/layouts/default";
-import BasePanel from "../../components/panels/Base";
-import { UserModel } from "../../models/User";
+import BasePanel from "../../components/panels/base-panel";
+import { UserModel } from "../../models/user";
 import "./$id.less";
 
 export default class ProfileUser extends DefaultLayout<
