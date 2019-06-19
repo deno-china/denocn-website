@@ -8,12 +8,13 @@ export default abstract class DefaultLayout<P = any, S = any> extends Component<
   S
 > {
   render() {
+    const sides = this.renderSide();
     return (
       <div className="layout-default">
         <Header />
         <div id="main-wrapper">
           <div className={`content`}>{this.renderContent()}</div>
-          <div className="side">{this.renderSide()}</div>
+          {sides && <div className="side">{sides}</div>}
         </div>
         <Footer />
       </div>

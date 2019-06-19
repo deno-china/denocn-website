@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./index.less";
+import "./$id.less";
 
 export default class Detail extends Component {
   render() {

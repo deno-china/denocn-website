@@ -1,57 +1,83 @@
 .page-index {
   .topics {
     .header {
-      a {
+      span {
         display: inline-block;
         border-radius: 5px;
         padding: 5px 10px;
         color: #333;
         text-decoration: none;
         font-size: 14px;
+        cursor: pointer;
         &:hover {
           background: #ddd;
         }
       }
     }
     .list {
-      a {
-        display: block;
-        line-height: 40px;
+      li {
+        display: flex;
+        flex-direction: row;
         border-bottom: 1px solid #eee;
         overflow: hidden;
         padding: 10px 5px;
-        img {
-          float: left;
+        font-size: 14px;
+        > .right {
+          display: flex;
+          flex: 1;
+          flex-direction: column;
+          .type {
+            color: #777;
+            display: inline;
+            margin-right: 10px;
+          }
+          h2 {
+            display: inline;
+            font-size: 15px;
+            color: #333;
+          }
+        }
+        .avatar {
           display: block;
           width: 40px;
           height: 40px;
           border-radius: 50%;
           border: 1px solid #eee;
+          margin-right: 10px;
         }
-        h2 {
-          display: block;
-          float: left;
-          font-size: 16px;
-          color: #333;
-        }
-        i {
-          float: left;
-          display: block;
-          border-radius: 5px;
+
+        .tag {
+          display: inline;
+          border-radius: 3px;
           background: #388e3c;
-          line-height: 26px;
-          margin: 7px 10px;
-          padding: 0 8px;
-          font-size: 14px;
+          line-height: 20px;
+          padding: 0 5px;
+          margin-right: 10px;
+          font-size: 12px;
           font-style: normal;
           color: #fff;
         }
-        .counters {
-          float: right;
-          font-size: 16px;
-          color: #888;
+        .info {
+          font-size: 13px;
+          margin-top: 5px;
+          color: #adaaa8;
+          a {
+            color: #797776;
+            text-decoration: underline;
+          }
+          .author {
+            margin-right: 5px;
+          }
           .time {
-            font-size: 13px;
+            margin-right: 5px;
+            display: inline-block;
+            &::before {
+              content: "•";
+              margin-right: 5px;
+            }
+          }
+          .view {
+            margin-right: 5px;
           }
         }
       }

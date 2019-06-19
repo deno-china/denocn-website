@@ -1,11 +1,12 @@
-import React, { FunctionComponent } from "react";
+import DefaultLayout from "../../components/layouts/default";
+import BasePanel from "../../components/panels/base-panel";
+import React from "react";
 
-const Publish: FunctionComponent = props => {
-  return (
-    <a href="#">
-     发布
-    </a>
-  );
-};
-
-export default Publish;
+export default class Publish extends DefaultLayout {
+  renderContent(): JSX.Element {
+    return <BasePanel white>发布</BasePanel>;
+  }
+  renderSide(): JSX.Element {
+    return null;
+  }
+}
