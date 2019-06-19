@@ -1,0 +1,57 @@
+.page-publish {
+  overflow: hidden;
+  * {
+    outline: none;
+  }
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    h4 {
+      padding: 10px 20px;
+    }
+    button {
+      height: 40px;
+      display: block;
+      width: 100px;
+      border: none;
+      border-left: 1px solid #eee;
+      background: #fff;
+      color: #4fc3f7;
+      font-size: 16px;
+      cursor: pointer;
+      &:hover {
+        background: #f8f8f8;
+      }
+    }
+  }
+  .body {
+    padding: 20px;
+    .form {
+      margin-bottom: 20px;
+      font-size: 14px;
+      display: flex;
+      flex-direction: row;
+      select {
+        width: 100px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        height: 36px;
+        font-size: inherit;
+        display: inline-block;
+        margin-right: 20px;
+      }
+      input {
+        border: 1px solid #ddd;
+        padding: 0 10px;
+        border-radius: 5px;
+        height: 36px;
+        font-size: inherit;
+        display: inline-block;
+        flex: 1;
+      }
+    }
+  }
+}

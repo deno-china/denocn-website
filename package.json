@@ -36,6 +36,7 @@
     "react-dom": "^16.8.6",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
+    "react-simplemde-editor": "^4.0.2",
     "reflect-metadata": "^0.1.13"
   },
   "keywords": [],

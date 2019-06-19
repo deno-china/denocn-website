@@ -15,9 +15,6 @@ export interface TopicModel {
   reply_count?: number;
   collect_count?: number;
   last_reply_id?: number;
-  reply_user_name?: string;
-  reply_time?: string;
-  reply_user_id?: number;
-  reply_user_avatar?: string;
+  last_reply_time?: string;
   deleted?: boolean;
 }

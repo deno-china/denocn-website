@@ -34,7 +34,7 @@ const Topic: FunctionComponent<TopicItemProps> = props => {
               >
                 {props.topic.reply_user_name}
               </Link>
-              <span className="time">回复于 {props.topic.reply_time}</span>
+              <span className="time">回复于 {props.topic.last_reply_time}</span>
               <span className="view">
                 • {props.topic.reply_count}回复 • {props.topic.view_count}查看
               </span>

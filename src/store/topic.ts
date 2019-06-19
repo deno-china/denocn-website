@@ -6,6 +6,9 @@ import { TopicModel } from "../models/topic";
 export interface TopicListItem extends TopicModel {
   user_nick_name: string;
   user_avatar: string;
+  reply_user_name?: string;
+  reply_user_id?: number;
+  reply_user_avatar?: string;
 }
 
 class Store {
@@ -30,7 +33,7 @@ class Store {
     this.list = list.map((item: TopicListItem) => {
       return {
         ...item,
-        reply_time: moment(item.reply_time).fromNow(),
+        last_reply_time: moment(item.last_reply_time).fromNow(),
         created_at: moment(item.created_at).fromNow()
       };
     });
