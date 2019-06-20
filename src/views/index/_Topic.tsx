@@ -1,3 +1,9 @@
+import {
+  faClock,
+  faCommentDots,
+  faEye
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 import { TopicListItem } from "../../store/topic";
@@ -34,22 +40,26 @@ const Topic: FunctionComponent<TopicItemProps> = props => {
               >
                 {props.topic.reply_user_name}
               </Link>
+              <FontAwesomeIcon icon={faClock} color="#bbb" />
               <span className="time">回复于 {props.topic.last_reply_time}</span>
-              <span className="view">
-                • {props.topic.reply_count}回复 • {props.topic.view_count}查看
-              </span>
             </>
           ) : (
             <>
               <Link className="author" to={`/user/${props.topic.author_id}`}>
                 {props.topic.user_nick_name}
               </Link>
+              <FontAwesomeIcon icon={faClock} color="#bbb" />
               <span className="time">发布于 {props.topic.created_at}</span>
-              <span className="view">
-                • {props.topic.reply_count}回复 • {props.topic.view_count}查看
-              </span>
             </>
           )}
+          <span className="icon">
+            <FontAwesomeIcon icon={faCommentDots} />
+            {props.topic.reply_count}
+          </span>
+          <span className="icon">
+            <FontAwesomeIcon icon={faEye} />
+            {props.topic.view_count}
+          </span>
         </div>
       </div>
     </li>

@@ -1,4 +1,8 @@
-import { faCommentDots, faEye } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCommentDots,
+  faEye,
+  faClock
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { observer } from "mobx-react";
 import React from "react";
@@ -9,6 +13,8 @@ import BasePanel from "../../components/panels/base-panel";
 import UserInfoPanel from "../../components/panels/user-info";
 import detailStore from "../../store/detail";
 import "./$id.less";
+import FriendsLinkPanel from "../../components/panels/friends-link";
+import QQGroupPanel from "../../components/panels/qq-group";
 
 @observer
 export default class Detail extends DefaultLayout<
@@ -37,13 +43,16 @@ export default class Detail extends DefaultLayout<
             </i>
           )}
           {detailStore.topic.is_good && <i className="tag">精华</i>}
-          <span className="time">发布于 {detailStore.topic.created_at}</span>
-          <span className="icon">
-            <FontAwesomeIcon icon={faEye} />
-            {detailStore.topic.reply_count}
+          <span className="time">
+            <FontAwesomeIcon icon={faClock} color="#bbb" />
+            发布于 {detailStore.topic.created_at}
           </span>
           <span className="icon">
             <FontAwesomeIcon icon={faCommentDots} />
+            {detailStore.topic.reply_count}
+          </span>
+          <span className="icon">
+            <FontAwesomeIcon icon={faEye} />
             {detailStore.topic.view_count}
           </span>
         </div>
@@ -55,6 +64,8 @@ export default class Detail extends DefaultLayout<
     return (
       <>
         <UserInfoPanel user={detailStore.topic.author} />
+        <FriendsLinkPanel />
+        <QQGroupPanel />
       </>
     );
   }

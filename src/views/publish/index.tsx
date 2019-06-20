@@ -1,3 +1,5 @@
+import { faEdit, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 import { httpPost } from "../../common/request";
@@ -49,8 +51,13 @@ class Publish extends DefaultLayout<RouteComponentProps, PublishState> {
         white
         header={
           <>
-            <h4>发布主题</h4>
-            <button onClick={this.onSave.bind(this)}>提交</button>
+            <h4>
+              <FontAwesomeIcon className="icon" icon={faEdit} />
+              发布主题
+            </h4>
+            <button className="btn green" onClick={this.onSave.bind(this)}>
+              提交
+            </button>
           </>
         }
       >
@@ -71,6 +78,11 @@ class Publish extends DefaultLayout<RouteComponentProps, PublishState> {
             value={this.state.title}
             onChange={({ target }) => this.setState({ title: target.value })}
           />
+        </div>
+
+        <div className="tips">
+          <FontAwesomeIcon icon={faInfoCircle} />
+          可以粘贴上传图片
         </div>
 
         <Editor

@@ -1,3 +1,5 @@
+@import "../../common.less";
+
 .page-publish {
   overflow: hidden;
   * {
@@ -10,21 +12,22 @@
     align-items: center;
     padding: 0;
     h4 {
-      padding: 10px 20px;
+      padding: 0px 20px;
+      font-size: 18px;
+      line-height: 20px;
+    }
+    .icon {
+      margin-right: 10px;
+      color: @primary;
     }
     button {
+      margin: 20px;
       height: 40px;
-      display: block;
       width: 100px;
-      border: none;
-      border-left: 1px solid #eee;
-      background: #fff;
-      color: #4fc3f7;
       font-size: 16px;
+      background: @primary;
       cursor: pointer;
-      &:hover {
-        background: #f8f8f8;
-      }
+      border: none;
     }
   }
   .body {
@@ -51,6 +54,15 @@
         font-size: inherit;
         display: inline-block;
         flex: 1;
+      }
+    }
+    .tips {
+      margin-bottom: 10px;
+      font-size: 13px;
+      color: #777;
+      svg {
+        margin-right: 5px;
+        color: #ccc;
       }
     }
   }
