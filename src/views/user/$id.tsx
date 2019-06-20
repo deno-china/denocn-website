@@ -1,20 +1,25 @@
+import { observer } from "mobx-react";
 import React from "react";
 import { RouteComponentProps } from "react-router";
 import "reflect-metadata";
 import DefaultLayout from "../../components/layouts/default";
 import BasePanel from "../../components/panels/base-panel";
+import FriendsLinkPanel from "../../components/panels/friends-link";
+import QQGroupPanel from "../../components/panels/qq-group";
 import { UserModel } from "../../models/user";
+import userStore from "../../store/user";
 import "./$id.less";
 
+@observer
 export default class ProfileUser extends DefaultLayout<
   RouteComponentProps<{ id: string }>
 > {
   renderContent(): JSX.Element {
     console.log(this.props.match.params.id);
-    const user: UserModel = {};
+    const user: UserModel = userStore.info;
     const id = 1;
     return (
-      <BasePanel header="用户信息" className="page-profile">
+      <BasePanel white header="用户信息" className="page-user">
         <div className="register-time">注册于：{user.created_at}</div>
         <img className="avatar" src={user.avatar} alt={user.name} />
         <div className="name">
@@ -37,7 +42,12 @@ export default class ProfileUser extends DefaultLayout<
     );
   }
   renderSide(): JSX.Element {
-    return <></>;
+    return (
+      <>
+        <FriendsLinkPanel />
+        <QQGroupPanel />
+      </>
+    );
   }
   componentWillMount() {
     const id = this.props.match.params.id;

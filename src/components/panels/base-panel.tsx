@@ -16,7 +16,7 @@ const BasePanel: FunctionComponent<basePanelProps> = props => {
   ].join(" ");
   return (
     <div className={cls}>
-      <div className="header">{props.header}</div>
+      {props.header && <div className="header">{props.header}</div>}
       <div className="body">{props.children}</div>
     </div>
   );

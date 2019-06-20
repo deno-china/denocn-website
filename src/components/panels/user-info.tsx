@@ -9,13 +9,14 @@ interface userInfoPanelProps {
 }
 
 const UserInfoPanel: FunctionComponent<userInfoPanelProps> = props => {
-  return props.user ? (
+  return props.user && props.user.id ? (
     <BasePanel className="panel-user-info" header="用户">
-      <Link to={`/user/${props.user.id}`}>
+      {/* <Link to={`/user/${props.user.id}`}> */}
+      <Link to={`/user/profile`}>
         <img src={props.user.avatar} alt="" />
       </Link>
       <div style={{ float: "left" }}>
-        <Link to={`/user/${props.user.id}`} className="name">
+        <Link to={`/user/profile`} className="name">
           {props.user.nick_name}
         </Link>
         <div className="score">
@@ -23,12 +24,16 @@ const UserInfoPanel: FunctionComponent<userInfoPanelProps> = props => {
         </div>
       </div>
       <div className="bio">“ {props.user.signature} ”</div>
-      <Link to={'/publish'} className="btn green">发布新话题</Link>
+      <Link to={"/publish"} className="btn green">
+        发布新话题
+      </Link>
     </BasePanel>
   ) : (
-    <BasePanel className="panel-user-info" header="DENOCN：Deno 开源技术社区">
+    <BasePanel className="panel-user-info" header="Deno 开源技术社区">
       <p>您可以</p>
-      <a className="btn green" href="/api/user/login">通过github登录</a>
+      <a className="btn green" href="/api/user/login">
+        通过Github登录
+      </a>
     </BasePanel>
   );
 };
