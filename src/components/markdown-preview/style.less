@@ -1,4 +1,5 @@
-.com-markdown-preview {
+.com-markdown-preview,
+.editor-preview-side {
   background: #fff !important;
   padding: 20px;
   font-size: 16px;
@@ -6,6 +7,12 @@
   font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", STHeiti,
     "Microsoft YaHei", serif;
   tab-size: 4;
+  & > :first-child {
+    margin-top: 0 !important;
+  }
+  & > :last-child {
+    margin-bottom: 0 !important;
+  }
   .header {
     .title {
       font-size: 2em;
@@ -30,10 +37,58 @@
   }
   h1 {
     color: #333;
+    margin: 0.67em 0;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 0.3em;
+    font-size: 2em;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    margin-top: 24px;
+  }
+  h2 {
+    margin: 0.83em 0;
+    font-size: 1.5em;
+    border-bottom: 1px solid #eaecef;
+    padding-bottom: 0.3em;
+  }
+  h3 {
+    margin: 1em 0;
+    font-size: 1.25em;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    margin-top: 24px;
+  }
+  h4 {
+    margin: 1.33em 0;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    margin-top: 24px;
+    font-size: 1em;
+  }
+  h5 {
+    margin: 1.67em 0;
+    font-size: 0.875em;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    margin-top: 24px;
+  }
+  h6 {
+    margin: 2.33em 0;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    margin-top: 24px;
   }
   p {
     font-size: 16px;
     line-height: 1.8;
+    margin: 1em 0;
+    margin-bottom: 16px;
+    margin-top: 0;
   }
   blockquote {
     margin: 10px 0 0;
@@ -46,9 +101,12 @@
     }
   }
   table {
-    border: 1px solid #ddd;
     border-collapse: collapse;
+    margin-bottom: 16px;
     border-spacing: 0;
+    display: block;
+    overflow: auto;
+    width: 100%;
     thead {
       display: table-header-group;
       vertical-align: middle;
@@ -59,13 +117,44 @@
       vertical-align: middle;
       border-color: inherit;
     }
+    th {
+      color: #24292e;
+    }
+    td {
+      color: #24292e;
+    }
     td,
     th {
-      padding: 6px 13px;
       border: 1px solid #dfe2e5;
+      padding: 6px 13px;
     }
     tr:nth-child(2n) {
-      background: #f6f8fa;
+      background-color: #f6f8fa;
     }
+  }
+  pre {
+    margin-bottom: 16px;
+    background-color: #f6f8fa;
+    border-radius: 3px;
+    font-size: 85%;
+    line-height: 1.45;
+    overflow: auto;
+    padding: 16px;
+    code {
+        background-color: transparent;
+    }
+  }
+  code {
+    background-color: rgba(27, 31, 35, 0.05);
+    border-radius: 3px;
+    font-size: 85%;
+    margin: 0;
+    padding: 0.2em 0.4em;
+  }
+  img {
+    max-width: 100%;
+    background-color: #fff;
+    box-sizing: content-box;
+    border-style: none;
   }
 }

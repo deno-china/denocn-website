@@ -3,6 +3,7 @@ import React, { FunctionComponent, useEffect, useRef } from "react";
 import SimpleMDE from "react-simplemde-editor";
 import { uploadBase64 } from "../../common/request";
 import { drawImage } from "./hack";
+import "./index.less";
 import editorOptions from "./options";
 
 interface EditorProps {
