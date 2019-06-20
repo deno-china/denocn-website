@@ -1,43 +1,11 @@
 import "easymde/dist/easymde.min.css";
 import React from "react";
-import { RouteComponentProps, Router, withRouter } from "react-router";
-import SimpleMDE from "react-simplemde-editor";
+import { RouteComponentProps, withRouter } from "react-router";
 import { httpPost } from "../../common/request";
+import Editor from "../../components/editor";
 import DefaultLayout from "../../components/layouts/default";
 import BasePanel from "../../components/panels/base-panel";
 import "./index.less";
-
-const editorOptions = {
-  spellChecker: false,
-  renderingConfig: {
-    singleLineBreaks: false,
-    codeSyntaxHighlighting: true
-  },
-  promptURLs: true,
-  promptTexts: {
-    image: "输入URL地址",
-    link: "输入链接地址"
-  },
-  toolbar: [
-    "bold",
-    "italic",
-    "strikethrough",
-    "heading",
-    "code",
-    "quote",
-    "unordered-list",
-    "ordered-list",
-    "clean-block",
-    "link",
-    "image",
-    "table",
-    "horizontal-rule",
-    "|",
-    "preview",
-    "side-by-side",
-    "fullscreen"
-  ]
-};
 
 interface PublishState {
   content: string;
@@ -51,38 +19,6 @@ class Publish extends DefaultLayout<RouteComponentProps, PublishState> {
     title: "",
     type: "分享"
   };
-
-  handleChange(value: string) {
-    console.log(value);
-    this.setState({ content: value });
-  }
-
-  componentDidMount() {
-    document.addEventListener("paste", function(event) {
-      if (event.clipboardData) {
-        var clipboardData = event.clipboardData;
-        if (clipboardData.items) {
-          var blob;
-          for (var i = 0; i < clipboardData.items.length; i++) {
-            if (clipboardData.items[i].type.indexOf("image") !== -1) {
-              blob = clipboardData.items[i].getAsFile();
-              break;
-            }
-          }
-          if (blob) {
-            var reader = new FileReader();
-            reader.onload = function(evt) {
-              var base64 = evt.target["result"];
-              console.log(base64);
-              document.getElementById("img").setAttribute("src", base64);
-              // TODO: 上传图片
-            };
-            reader.readAsDataURL(blob);
-          }
-        }
-      }
-    });
-  }
 
   async onSave() {
     if (!this.state.title || this.state.title.length < 10) {
@@ -138,10 +74,9 @@ class Publish extends DefaultLayout<RouteComponentProps, PublishState> {
           />
         </div>
 
-        <SimpleMDE
+        <Editor
           value={this.state.content}
-          onChange={this.handleChange.bind(this)}
-          options={editorOptions}
+          onChange={value => this.setState({ content: value })}
         />
       </BasePanel>
     );

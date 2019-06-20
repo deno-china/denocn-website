@@ -27,3 +27,8 @@ export async function httpPost<T = any>(url: string, data?: any) {
 export async function httpGet<T = any>(url: string, params?: any) {
   return (await axios.get(url, { params })) as T;
 }
+
+export async function uploadBase64(data: string): string {
+  const { path } = await httpPost("/api/file/base64upload", { data });
+  return path;
+}
