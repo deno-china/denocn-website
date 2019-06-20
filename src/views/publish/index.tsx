@@ -1,4 +1,3 @@
-import "easymde/dist/easymde.min.css";
 import React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 import { httpPost } from "../../common/request";

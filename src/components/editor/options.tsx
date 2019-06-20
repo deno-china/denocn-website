@@ -1,14 +1,15 @@
+import hljs from "highlight.js";
+import "highlight.js/styles/default.css";
+import "highlight.js/styles/github.css";
+
 const editorOptions = {
   spellChecker: false,
   renderingConfig: {
     singleLineBreaks: false,
-    codeSyntaxHighlighting: true
+    codeSyntaxHighlighting: true,
+    hljs
   },
   promptURLs: true,
-  promptTexts: {
-    image: "输入URL地址",
-    link: "输入链接地址"
-  },
   toolbar: [
     "bold",
     "italic",
