@@ -1,20 +1,23 @@
+import { observer } from "mobx-react";
 import React from "react";
 import { RouteComponentProps } from "react-router";
 import "reflect-metadata";
 import DefaultLayout from "../../components/layouts/default";
 import BasePanel from "../../components/panels/base-panel";
 import { UserModel } from "../../models/user";
+import userStore from '../../store/user';
 import "./$id.less";
 
+@observer
 export default class ProfileUser extends DefaultLayout<
   RouteComponentProps<{ id: string }>
 > {
   renderContent(): JSX.Element {
     console.log(this.props.match.params.id);
-    const user: UserModel = {};
+    const user: UserModel = userStore.info;
     const id = 1;
     return (
-      <BasePanel header="用户信息" className="page-profile">
+      <BasePanel header="用户信息" className="page-user">
         <div className="register-time">注册于：{user.created_at}</div>
         <img className="avatar" src={user.avatar} alt={user.name} />
         <div className="name">

@@ -9,13 +9,14 @@ interface userInfoPanelProps {
 }
 
 const UserInfoPanel: FunctionComponent<userInfoPanelProps> = props => {
-  return props.user ? (
+  return props.user && props.user.id  ? (
     <BasePanel className="panel-user-info" header="用户">
-      <Link to={`/user/${props.user.id}`}>
+      {/* <Link to={`/user/${props.user.id}`}> */}
+      <Link to={`/user/profile`}>
         <img src={props.user.avatar} alt="" />
       </Link>
       <div style={{ float: "left" }}>
-        <Link to={`/user/${props.user.id}`} className="name">
+        <Link to={`/user/profile`} className="name">
           {props.user.nick_name}
         </Link>
         <div className="score">
