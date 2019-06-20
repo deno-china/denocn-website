@@ -1,8 +1,9 @@
+import "easymde/dist/easymde.min.css";
 import React, { FunctionComponent, useEffect, useRef } from "react";
 import SimpleMDE from "react-simplemde-editor";
 import { uploadBase64 } from "../../common/request";
-import editorOptions from "./options";
 import { drawImage } from "./hack";
+import editorOptions from "./options";
 
 interface EditorProps {
   onChange: (value: string) => void;
