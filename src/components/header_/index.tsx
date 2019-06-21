@@ -8,10 +8,10 @@ const Header: FunctionComponent = () => {
   return (
     <header>
       <div className="inner">
-        <div className="logo">
+        <a href="/" className="logo">
           <img src={logo} alt="logo" />
           <span>DENO中文社区</span>
-        </div>
+        </a>
 
         <nav>
           <Link to="/">首页</Link>
