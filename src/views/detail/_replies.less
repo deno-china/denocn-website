@@ -1,0 +1,44 @@
+@import "../../common.less";
+
+.panel-detail-replies {
+  .body {
+    padding: 0 20px;
+    > ul {
+      > li {
+        display: flex;
+        flex-direction: row;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+        &:last-child {
+          border-bottom: none;
+        }
+        .avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          border: 1px solid #ddd;
+          margin-right: 10px;
+        }
+        .author {
+          flex: 1;
+          font-size: 13px;
+          .name {
+            font-size: 14px;
+            color: #404040;
+            margin-right: 10px;
+          }
+          .floor {
+            color: @primary;
+            margin-right: 10px;
+          }
+          .time {
+            color: #777;
+          }
+        }
+        .com-markdown-preview {
+          padding: 0;
+        }
+      }
+    }
+  }
+}

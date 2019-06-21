@@ -1,3 +1,5 @@
+@import "../../common.less";
+
 .page-detail {
   > .header {
     padding: 20px 20px;
@@ -22,6 +24,24 @@
     }
     svg {
       margin-right: 5px;
+    }
+    .ops {
+      margin-top: 10px;
+      font-size: 12px;
+      button {
+        padding: 3px 5px;
+        margin-right: 10px;
+        border: 1px solid #fff;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      .edit {
+        background-color: @primary;
+      }
+      .del {
+        background-color: rgb(255, 136, 136);
+      }
     }
   }
   > .body {

@@ -22,12 +22,16 @@ class Store {
   total: number = 0;
 
   @observable
+  pageSize: number = 15;
+
+  @observable
   type: string = "all";
 
   @action
   async load() {
     const { total, list } = await httpGet(`/api/topic/${this.type}`, {
-      page: this.page
+      page: this.page,
+      size: this.pageSize
     });
     this.total = total;
     this.list = list.map((item: TopicListItem) => {

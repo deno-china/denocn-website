@@ -1,10 +1,11 @@
 import { observer } from "mobx-react";
 import React from "react";
 import DefaultLayout from "../../components/layouts/default";
+import Pagination from "../../components/pagination";
 import BasePanel from "../../components/panels/base-panel";
 import FriendsLinkPanel from "../../components/panels/friends-link";
+import LoginUserPanel from "../../components/panels/login-user";
 import QQGroupPanel from "../../components/panels/qq-group";
-import UserInfoPanel from "../../components/panels/user-info";
 import topicStore from "../../store/topic";
 import userStore from "../../store/user";
 import "./index.less";
@@ -32,6 +33,16 @@ export default class Home extends DefaultLayout {
               <Topic topic={topic} key={topic.id} />
             ))}
           </ul>
+          <Pagination
+            page={topicStore.page}
+            total={topicStore.total}
+            size={topicStore.pageSize}
+            onChange={(page, size) => {
+              topicStore.page = page;
+              topicStore.pageSize = size;
+              topicStore.load();
+            }}
+          />
         </BasePanel>
       </div>
     );
@@ -39,7 +50,7 @@ export default class Home extends DefaultLayout {
   renderSide(): JSX.Element {
     return (
       <>
-        <UserInfoPanel user={userStore.info} />
+        <LoginUserPanel user={userStore.info} />
         <FriendsLinkPanel />
         <QQGroupPanel />
       </>
