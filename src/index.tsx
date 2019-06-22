@@ -3,6 +3,7 @@ import moment from "moment";
 import "moment/locale/zh-cn";
 import React from "react";
 import ReactDOM from "react-dom";
+import { finishRender } from "./common/seo";
 import "./index.less";
 import { ViewsRouter } from "./routes";
 
@@ -14,3 +15,7 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById("app"));
+
+setTimeout(() => {
+  finishRender();
+}, 3000);
