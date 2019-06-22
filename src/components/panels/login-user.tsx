@@ -11,7 +11,12 @@ interface userInfoPanelProps {
 
 const LoginUserPanel: FunctionComponent<userInfoPanelProps> = props => {
   return props.user && props.user.id ? (
-    <UserInfoPanel user={props.user} mySelf />
+    <>
+      <UserInfoPanel user={props.user} mySelf />
+      <BasePanel white>
+        <Link className="btn green" to="/publish">发表主题</Link>
+      </BasePanel>
+    </>
   ) : (
     <BasePanel className="panel-user-info" header="Deno 开源技术社区">
       <p>您可以</p>

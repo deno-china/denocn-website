@@ -6,9 +6,11 @@ import {
   faTrash
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Modal from "antd/es/modal";
 import { observer } from "mobx-react";
 import React from "react";
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps, withRouter } from "react-router";
+import { httpGet } from "../../common/request";
 import DefaultLayout from "../../components/layouts/default";
 import MarkdownPreview from "../../components/markdown-preview";
 import BasePanel from "../../components/panels/base-panel";
@@ -20,11 +22,10 @@ import userStore from "../../store/user";
 import "./$id.less";
 import AddReply from "./_add-reply";
 import RepliesPanel from "./_replies";
+import { Link } from "react-router-dom";
 
 @observer
-export default class Detail extends DefaultLayout<
-  RouteComponentProps<{ id?: string }>
-> {
+class Detail extends DefaultLayout<RouteComponentProps<{ id?: string }>> {
   componentWillMount() {
     detailStore.load(this.props.match.params.id);
   }
@@ -46,7 +47,10 @@ export default class Detail extends DefaultLayout<
   renderHeader() {
     return (
       <>
-        <h2>{detailStore.topic.title}</h2>
+        <h2>
+          <span className="type">{detailStore.topic.type}</span>
+          {detailStore.topic.title}
+        </h2>
         <div>
           {detailStore.topic.is_top && (
             <i className="tag" style={{ background: "#fbbd08" }}>
@@ -69,11 +73,16 @@ export default class Detail extends DefaultLayout<
         </div>
         {userStore.info && userStore.info.id === detailStore.topic.author_id && (
           <div className="ops">
-            <button className="edit">
-              <FontAwesomeIcon icon={faEdit} />
-              编辑
-            </button>
-            <button className="del">
+            <Link to={`/edit/${detailStore.topic.id}`}>
+              <button className="edit">
+                <FontAwesomeIcon icon={faEdit} />
+                编辑
+              </button>
+            </Link>
+            <button
+              className="del"
+              onClick={this.deleteTopic.bind(this, detailStore.topic.id)}
+            >
               <FontAwesomeIcon icon={faTrash} />
               删除
             </button>
@@ -92,4 +101,17 @@ export default class Detail extends DefaultLayout<
       </>
     );
   }
+
+  async deleteTopic(id: number) {
+    await Modal.confirm({
+      title: "询问",
+      content: "您是否要删除此主题？",
+      onOk: async () => {
+        await httpGet("/api/topic/delete/" + id);
+        this.props.history.goBack();
+      }
+    });
+  }
 }
+
+export default withRouter(Detail);

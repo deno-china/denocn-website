@@ -1,5 +1,6 @@
 import { observer } from "mobx-react";
 import React from "react";
+import { withRouter, RouteComponentProps } from "react-router";
 import DefaultLayout from "../../components/layouts/default";
 import Pagination from "../../components/pagination";
 import BasePanel from "../../components/panels/base-panel";
@@ -10,6 +11,7 @@ import topicStore from "../../store/topic";
 import userStore from "../../store/user";
 import "./index.less";
 import Topic from "./_topic";
+import { Link } from "react-router-dom";
 
 const types = [
   { type: "all", title: "全部" },
@@ -20,8 +22,13 @@ const types = [
 ];
 
 @observer
-export default class Home extends DefaultLayout {
+class Home extends DefaultLayout<RouteComponentProps> {
   componentWillMount() {
+    const params = new URLSearchParams(this.props.location.search);
+    const type = params.get("type") || "all";
+    const page = params.get("page") || "1";
+    topicStore.type = type;
+    topicStore.page = parseInt(page);
     topicStore.load();
   }
   renderContent(): JSX.Element {
@@ -40,6 +47,9 @@ export default class Home extends DefaultLayout {
             onChange={(page, size) => {
               topicStore.page = page;
               topicStore.pageSize = size;
+              this.props.history.replace(
+                "/?type=" + topicStore.type + "&page=" + page
+              );
               topicStore.load();
             }}
           />
@@ -61,15 +71,19 @@ export default class Home extends DefaultLayout {
       <div className="header">
         {types.map(type => {
           return (
-            <span
-              key={type.type}
-              onClick={() => topicStore.changeType(type.type as any)}
-            >
-              {type.title}
-            </span>
+            <Link key={type.type} replace to={`/?type=${type.type}`}>
+              <span
+                className={type.type === topicStore.type ? "active" : ""}
+                onClick={() => topicStore.changeType(type.type as any)}
+              >
+                {type.title}
+              </span>
+            </Link>
           );
         })}
       </div>
     );
   }
 }
+
+export default withRouter(Home);

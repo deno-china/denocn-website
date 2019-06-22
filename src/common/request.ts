@@ -1,4 +1,5 @@
 import Axios from "axios";
+import { Message } from "../components/antd";
 
 const baseURL = "/";
 let _token = "";
@@ -17,6 +18,8 @@ axios.interceptors.response.use(response => {
     return response.data.data;
   } else {
     // error
+    Message.error(response.data.msg);
+    throw response.data.msg;
   }
 });
 
@@ -28,7 +31,7 @@ export async function httpGet<T = any>(url: string, params?: any) {
   return (await axios.get(url, { params })) as T;
 }
 
-export async function uploadBase64(data: string): string {
+export async function uploadBase64(data: string): Promise<string> {
   const { path } = await httpPost("/api/file/base64upload", { data });
   return path;
 }
