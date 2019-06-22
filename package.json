@@ -7,6 +7,7 @@
     "dev": "node ./dev.js",
     "build": "parcel build src/index.html --no-cache"
   },
+  "assetsPath": "./public",
   "devDependencies": {
     "@types/react-highlight": "^0.12.1",
     "babel-core": "^6.26.3",
@@ -38,6 +39,7 @@
     "mobx": "^5.9.4",
     "mobx-react": "^5.4.3",
     "moment": "^2.24.0",
+    "parcel-plugin-asset-copier": "^1.0.0",
     "postcss-modules": "^1.4.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

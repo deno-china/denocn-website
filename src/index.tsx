@@ -18,4 +18,4 @@ ReactDOM.render(<App />, document.getElementById("app"));
 
 setTimeout(() => {
   finishRender();
-}, 3000);
+}, 2000);
