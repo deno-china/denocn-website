@@ -5,13 +5,13 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "http://api.denocn.org/:splat"
+  to = "http://api.denocn.org:3000/:splat"
   status = 200
   force = true
 
 [[redirects]]
   from = "/seo/*"
-  to = "http://api.denocn.org/seo/:splat"
+  to = "http://api.denocn.org:3000/seo/:splat"
   status = 200
   force = true
 
