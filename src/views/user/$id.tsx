@@ -24,7 +24,7 @@ export default class ProfileUser extends DefaultLayout<
         <img className="avatar" src={user.avatar} alt={user.name} />
         <div className="name">
           <span>{user.nick_name}</span>
-          <a href={`https://github.com/${user.github_id}`} className="github">
+          <a href={`https://github.com/${user.github_name}`} className="github">
             {user.name}
           </a>
         </div>
