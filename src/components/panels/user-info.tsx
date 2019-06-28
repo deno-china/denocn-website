@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
-import { UserModel } from '../../models/user';
+import { UserModel } from '../../models/User';
 import BasePanel from './base-panel';
 import './user-info.less';
 

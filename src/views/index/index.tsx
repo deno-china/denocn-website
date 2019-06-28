@@ -10,7 +10,7 @@ import QQGroupPanel from '../../components/panels/qq-group';
 import topicStore from '../../store/topic';
 import userStore from '../../store/user';
 import './index.less';
-import Topic from './_topic';
+import Topic from './_Topic';
 import { Link } from 'react-router-dom';
 
 const types = [

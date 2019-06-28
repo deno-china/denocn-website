@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx';
-import { UserModel } from '../models/user';
+import { UserModel } from '../models/User';
 import { httpGet } from '../common/request';
 
 class Store {

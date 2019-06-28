@@ -19,5 +19,5 @@ const server = new ParcelProxyServer({
 });
 
 server.listen(1234, () => {
-  console.log("Parcel proxy server has started");
+  console.log("Parcel proxy server has started,running in http://localhost:1234");
 });
