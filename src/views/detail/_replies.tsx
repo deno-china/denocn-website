@@ -1,10 +1,10 @@
-import { faComments } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { FunctionComponent } from "react";
-import MarkdownPreview from "../../components/markdown-preview";
-import BasePanel from "../../components/panels/base-panel";
-import { ReplyDetail } from "../../store/detail";
-import "./_replies.less";
+import { faComments } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { FunctionComponent } from 'react';
+import MarkdownPreview from '../../components/markdown-preview';
+import BasePanel from '../../components/panels/base-panel';
+import { ReplyDetail } from '../../store/detail';
+import './_replies.less';
 
 interface RepliesPanelProps {
   replies: ReplyDetail[];
@@ -24,25 +24,23 @@ const RepliesPanel: FunctionComponent<RepliesPanelProps> = ({ replies }) => {
       }
     >
       <ul>
-        {replies.map((reply, index) => {
-          return (
-            <li key={reply.id}>
-              <img
-                className="avatar"
-                src={reply.author_avatar}
-                alt={reply.author_nick_name}
-              />
-              <div className="right">
-                <div className="author">
-                  <span className="name">{reply.author_nick_name}</span>
-                  <span className="floor">{index + 1}楼</span>
-                  <span className="time">{reply.created_at}</span>
-                </div>
-                <MarkdownPreview content={reply.content} />
+        {replies.map((reply, index) => (
+          <li key={reply.id}>
+            <img
+              className="avatar"
+              src={reply.author_avatar}
+              alt={reply.author_nick_name}
+            />
+            <div className="right">
+              <div className="author">
+                <span className="name">{reply.author_nick_name}</span>
+                <span className="floor">{index + 1}楼</span>
+                <span className="time">{reply.created_at}</span>
               </div>
-            </li>
-          );
-        })}
+              <MarkdownPreview content={reply.content} />
+            </div>
+          </li>
+        ))}
       </ul>
     </BasePanel>
   );

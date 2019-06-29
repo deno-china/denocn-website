@@ -1,6 +1,6 @@
-import { observable, action } from "mobx";
-import { UserModel } from "../models/user";
-import { httpGet } from "../common/request";
+import { observable, action } from 'mobx';
+import { UserModel } from '../models/user';
+import { httpGet } from '../common/request';
 
 class Store {
   @observable
@@ -8,7 +8,7 @@ class Store {
 
   @action
   async loadInfo() {
-    const user = await httpGet<UserModel>("/api/user/me");
+    const user = await httpGet<UserModel>('/api/user/me');
     this.info = user;
   }
 }

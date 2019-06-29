@@ -1,10 +1,10 @@
-import React from "react";
-import { RouteComponentProps, withRouter } from "react-router";
-import { httpPost } from "../../common/request";
-import { Message } from "../../components/antd";
-import DefaultLayout from "../../components/layouts/default";
-import TopicEditor from "../../components/topic-editor";
-import "./index.less";
+import React from 'react';
+import { RouteComponentProps, withRouter } from 'react-router';
+import { httpPost } from '../../common/request';
+import { Message } from '../../components/antd';
+import DefaultLayout from '../../components/layouts/default';
+import TopicEditor from '../../components/topic-editor';
+import './index.less';
 
 class Publish extends DefaultLayout<RouteComponentProps> {
   renderContent(): JSX.Element {
@@ -16,15 +16,15 @@ class Publish extends DefaultLayout<RouteComponentProps> {
   }
 
   async onSave({ title, content, type }) {
-    const { id } = await httpPost("/api/topic/add", {
+    const { id } = await httpPost('/api/topic/add', {
       content,
       title,
-      type
+      type,
     });
 
     if (id) {
-      Message.success("发表成功");
-      this.props.history.push("/detail/" + id);
+      Message.success('发表成功');
+      this.props.history.push(`/detail/${id}`);
     }
   }
 }

@@ -1,10 +1,10 @@
-import { observer } from "mobx-react";
-import React from "react";
-import DefaultLayout from "../../../components/layouts/default";
-import BasePanel from "../../../components/panels/base-panel";
-import FriendsLinkPanel from "../../../components/panels/friends-link";
-import userStore from "../../../store/user";
-import "./index.less";
+import { observer } from 'mobx-react';
+import React from 'react';
+import DefaultLayout from '../../../components/layouts/default';
+import BasePanel from '../../../components/panels/base-panel';
+import FriendsLinkPanel from '../../../components/panels/friends-link';
+import userStore from '../../../store/user';
+import './index.less';
 
 @observer
 class Profile extends DefaultLayout {
@@ -12,8 +12,11 @@ class Profile extends DefaultLayout {
     const user = userStore.info;
     return (
       <>
-        <BasePanel header="个人主页" white={true} className="page-profile">
-          <div className="register-time">注册于：{user.created_at}</div>
+        <BasePanel header="个人主页" white className="page-profile">
+          <div className="register-time">
+            注册于：
+            {user.created_at}
+          </div>
           <div className="name">
             <span>{user.nick_name}</span>
             <a href={`https://github.com/${user.github_id}`} className="github">
@@ -21,11 +24,7 @@ class Profile extends DefaultLayout {
             </a>
           </div>
         </BasePanel>
-        <BasePanel
-          header="最近创建的话题"
-          white={true}
-          className="page-profile"
-        >
+        <BasePanel header="最近创建的话题" white className="page-profile">
           <div className="name">
             <span>{user.nick_name}</span>
             <a href={`https://github.com/${user.github_id}`} className="github">
@@ -33,11 +32,7 @@ class Profile extends DefaultLayout {
             </a>
           </div>
         </BasePanel>
-        <BasePanel
-          header="最近参与的话题"
-          white={true}
-          className="page-profile"
-        >
+        <BasePanel header="最近参与的话题" white className="page-profile">
           <div className="name">
             <span>{user.nick_name}</span>
             <a href={`https://github.com/${user.github_id}`} className="github">
@@ -60,6 +55,7 @@ class Profile extends DefaultLayout {
       </>
     );
   }
+
   renderSide(): JSX.Element {
     const user = userStore.info;
     return (

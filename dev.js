@@ -1,23 +1,25 @@
-const ParcelProxyServer = require("parcel-proxy-server");
+const ParcelProxyServer = require('parcel-proxy-server');
 
-const targetHost = "http://127.0.0.1:3000";
+const targetHost = 'http://127.0.0.1:3000';
 
 const server = new ParcelProxyServer({
-  entryPoint: "./src/index.html",
+  entryPoint: './src/index.html',
   parcelOptions: {},
   proxies: {
-    "/api": {
+    '/api': {
       target: targetHost,
       pathRewrite: {
-        "^/api": "/"
-      }
+        '^/api': '/',
+      },
     },
-    "/seo": {
-      target: targetHost
-    }
-  }
+    '/seo': {
+      target: targetHost,
+    },
+  },
 });
 
 server.listen(1234, () => {
-  console.log("Parcel proxy server has started");
+  console.log(
+    'Parcel proxy server has started,running in http://localhost:1234'
+  );
 });

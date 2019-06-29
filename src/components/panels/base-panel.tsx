@@ -1,6 +1,6 @@
-import { ReactElementLike } from "prop-types";
-import React, { FunctionComponent } from "react";
-import "./base-panel.less";
+import { ReactElementLike } from 'prop-types';
+import React, { FunctionComponent } from 'react';
+import './base-panel.less';
 
 interface basePanelProps {
   header?: ReactElementLike | string;
@@ -10,10 +10,10 @@ interface basePanelProps {
 
 const BasePanel: FunctionComponent<basePanelProps> = props => {
   const cls = [
-    "base-panel ",
-    props.white ? "base-panel-white" : "",
-    props.className
-  ].join(" ");
+    'base-panel ',
+    props.white ? 'base-panel-white' : '',
+    props.className,
+  ].join(' ');
   return (
     <div className={cls}>
       {props.header && <div className="header">{props.header}</div>}

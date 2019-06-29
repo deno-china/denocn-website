@@ -1,3 +1,3 @@
 export function finishRender() {
-  window["prerenderReady"] = true;
+  window.prerenderReady = true;
 }

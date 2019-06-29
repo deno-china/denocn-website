@@ -1,5 +1,6 @@
-import React, { FunctionComponent } from "react";
-import "./index.less";
+/* eslint-disable */
+import React, { FunctionComponent } from 'react';
+import './index.less';
 
 export interface PaginationProps {
   page: number;
@@ -12,7 +13,7 @@ const Pagination: FunctionComponent<PaginationProps> = ({
   page,
   total,
   size = 20,
-  onChange = () => null
+  onChange = () => null,
 }) => {
   const lastPage = Math.ceil(total / size);
   if (lastPage < 2) return null;
@@ -27,24 +28,22 @@ const Pagination: FunctionComponent<PaginationProps> = ({
   return (
     <ul className="com-pagination">
       <li
-        className={page === 1 ? "active" : ""}
+        className={page === 1 ? 'active' : ''}
         onClick={() => onChange(1, size)}
       >
         1
       </li>
-      {[...Array(end - start > 0 ? end - start : 1).fill(0)].map((_, index) => {
-        return (
-          <li
-            className={page === index + start ? "active" : ""}
-            key={index}
-            onClick={() => onChange(index + start, size)}
-          >
-            {index + start}
-          </li>
-        );
-      })}
+      {[...Array(end - start > 0 ? end - start : 1).fill(0)].map((_, index) => (
+        <li
+          className={page === index + start ? 'active' : ''}
+          key={index}
+          onClick={() => onChange(index + start, size)}
+        >
+          {index + start}
+        </li>
+      ))}
       <li
-        className={page === lastPage ? "active" : ""}
+        className={page === lastPage ? 'active' : ''}
         onClick={() => onChange(lastPage, size)}
       >
         {lastPage}

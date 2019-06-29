@@ -1,16 +1,16 @@
 import {
   faCheck,
   faCommentDots,
-  faInfoCircle
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { FunctionComponent, useCallback, useState } from "react";
-import { httpPost } from "../../common/request";
-import { Message, Spin } from "../../components/antd";
-import Editor from "../../components/editor";
-import BasePanel from "../../components/panels/base-panel";
-import detailStore from "../../store/detail";
-import "./_add-reply.less";
+  faInfoCircle,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { FunctionComponent, useCallback, useState } from 'react';
+import { httpPost } from '../../common/request';
+import { Message, Spin } from '../../components/antd';
+import Editor from '../../components/editor';
+import BasePanel from '../../components/panels/base-panel';
+import detailStore from '../../store/detail';
+import './_add-reply.less';
 
 interface AddReplyProps {
   topicId: number;
@@ -18,24 +18,24 @@ interface AddReplyProps {
 }
 
 const AddReply: FunctionComponent<AddReplyProps> = ({ topicId, replyTo }) => {
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
   const [loading, setLoading] = useState(false);
   const onCommit = useCallback(async () => {
     if (!content.trim().length) {
-      Message.error("请输入内容");
+      Message.error('请输入内容');
       return;
     }
     setLoading(true);
     try {
-      await httpPost("/api/reply/add", {
+      await httpPost('/api/reply/add', {
         content,
         topic_id: topicId,
-        reply_to: replyTo
+        reply_to: replyTo,
       });
     } finally {
       setLoading(false);
     }
-    setContent("");
+    setContent('');
     detailStore.load(topicId);
   }, [content]);
   return (

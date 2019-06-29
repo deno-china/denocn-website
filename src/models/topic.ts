@@ -1,7 +1,7 @@
 export interface TopicModel {
   created_at?: string;
   updated_at?: string;
-  type?: "分享" | "问答" | "招聘";
+  type?: '分享' | '问答' | '招聘';
   id?: number;
   title?: string;
   content?: string;

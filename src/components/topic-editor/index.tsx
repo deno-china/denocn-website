@@ -1,12 +1,12 @@
-import { faEdit, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Spin from "antd/es/spin";
-import React, { Component } from "react";
-import { Message } from "../../components/antd";
-import Editor from "../../components/editor";
-import BasePanel from "../../components/panels/base-panel";
-import { TopicModel } from "../../models/topic";
-import "./index.less";
+import { faEdit, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Spin from 'antd/es/spin';
+import React, { Component } from 'react';
+import { Message } from '../antd';
+import Editor from '../editor';
+import BasePanel from '../panels/base-panel';
+import { TopicModel } from '../../models/topic';
+import './index.less';
 
 interface EditorState {
   content: string;
@@ -23,19 +23,28 @@ interface EditorProps {
 
 export default class TopicEditor extends Component<EditorProps, EditorState> {
   state = {
-    content: "",
-    title: "",
-    type: "分享",
-    loading: false
+    content: '',
+    title: '',
+    type: '分享',
+    loading: false,
   };
+
+  componentWillReceiveProps(props: EditorProps) {
+    const topic: TopicModel = props.topic || {};
+    this.setState({
+      content: topic.content,
+      title: topic.title,
+      type: topic.type,
+    });
+  }
 
   async onSave() {
     if (!this.state.title || this.state.title.length < 10) {
-      Message.error("标题至少10个字符");
+      Message.error('标题至少10个字符');
       return;
     }
     if (!this.state.content || this.state.content.length < 20) {
-      Message.error("内容至少20个字符");
+      Message.error('内容至少20个字符');
       return;
     }
 
@@ -44,20 +53,11 @@ export default class TopicEditor extends Component<EditorProps, EditorState> {
       await this.props.onSave({
         title: this.state.title,
         content: this.state.content,
-        type: this.state.type
+        type: this.state.type,
       });
     } finally {
       this.setState({ loading: false });
     }
-  }
-
-  componentWillReceiveProps(props: EditorProps) {
-    const topic: TopicModel = props.topic || {};
-    this.setState({
-      content: topic.content,
-      title: topic.title,
-      type: topic.type
-    });
   }
 
   render(): JSX.Element {

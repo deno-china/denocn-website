@@ -3,26 +3,26 @@ import {
   faCommentDots,
   faEdit,
   faEye,
-  faTrash
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Modal from "antd/es/modal";
-import { observer } from "mobx-react";
-import React from "react";
-import { RouteComponentProps, withRouter } from "react-router";
-import { httpGet } from "../../common/request";
-import DefaultLayout from "../../components/layouts/default";
-import MarkdownPreview from "../../components/markdown-preview";
-import BasePanel from "../../components/panels/base-panel";
-import FriendsLinkPanel from "../../components/panels/friends-link";
-import QQGroupPanel from "../../components/panels/qq-group";
-import UserInfoPanel from "../../components/panels/user-info";
-import detailStore from "../../store/detail";
-import userStore from "../../store/user";
-import "./$id.less";
-import AddReply from "./_add-reply";
-import RepliesPanel from "./_replies";
-import { Link } from "react-router-dom";
+  faTrash,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Modal from 'antd/es/modal';
+import { observer } from 'mobx-react';
+import React from 'react';
+import { RouteComponentProps, withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
+import { httpGet } from '../../common/request';
+import DefaultLayout from '../../components/layouts/default';
+import MarkdownPreview from '../../components/markdown-preview';
+import BasePanel from '../../components/panels/base-panel';
+import FriendsLinkPanel from '../../components/panels/friends-link';
+import QQGroupPanel from '../../components/panels/qq-group';
+import UserInfoPanel from '../../components/panels/user-info';
+import detailStore from '../../store/detail';
+import userStore from '../../store/user';
+import './$id.less';
+import AddReply from './_add-reply';
+import RepliesPanel from './_replies';
 
 @observer
 class Detail extends DefaultLayout<RouteComponentProps<{ id?: string }>> {
@@ -53,7 +53,7 @@ class Detail extends DefaultLayout<RouteComponentProps<{ id?: string }>> {
         </h2>
         <div>
           {detailStore.topic.is_top && (
-            <i className="tag" style={{ background: "#fbbd08" }}>
+            <i className="tag" style={{ background: '#fbbd08' }}>
               置顶
             </i>
           )}
@@ -104,12 +104,12 @@ class Detail extends DefaultLayout<RouteComponentProps<{ id?: string }>> {
 
   async deleteTopic(id: number) {
     await Modal.confirm({
-      title: "询问",
-      content: "您是否要删除此主题？",
+      title: '询问',
+      content: '您是否要删除此主题？',
       onOk: async () => {
-        await httpGet("/api/topic/delete/" + id);
+        await httpGet(`/api/topic/delete/${id}`);
         this.props.history.goBack();
-      }
+      },
     });
   }
 }

@@ -1,20 +1,22 @@
-import React, { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
-import { UserModel } from "../../models/user";
-import BasePanel from "./base-panel";
-import "./login-user.less";
-import UserInfoPanel from "./user-info";
+import React, { FunctionComponent } from 'react';
+import { Link } from 'react-router-dom';
+import { UserModel } from '../../models/user';
+import BasePanel from './base-panel';
+import './login-user.less';
+import UserInfoPanel from './user-info';
 
 interface userInfoPanelProps {
   user: UserModel;
 }
-
-const LoginUserPanel: FunctionComponent<userInfoPanelProps> = props => {
-  return props.user && props.user.id ? (
+// eslint-disable-next-line
+const LoginUserPanel: FunctionComponent<userInfoPanelProps> = props =>
+  props.user && props.user.id ? (
     <>
       <UserInfoPanel user={props.user} mySelf />
       <BasePanel white>
-        <Link className="btn green" to="/publish">发表主题</Link>
+        <Link className="btn green" to="/publish">
+          发表主题
+        </Link>
       </BasePanel>
     </>
   ) : (
@@ -25,6 +27,5 @@ const LoginUserPanel: FunctionComponent<userInfoPanelProps> = props => {
       </a>
     </BasePanel>
   );
-};
 
 export default LoginUserPanel;
