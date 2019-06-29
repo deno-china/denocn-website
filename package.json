@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node ./dev.js",
     "build": "parcel build src/index.html --no-cache",
-    "lint:js": "eslint --ext .js,.jsx,.ts,.tsx src --fix"
+    "lint:js": "eslint --ext .js,.jsx,.ts,.tsx src --fix",
+    "prettier": "prettier \"**/*.{ts,tsx,js,jsx,json,md}\" --write"
   },
   "assetsPath": "./public",
   "devDependencies": {

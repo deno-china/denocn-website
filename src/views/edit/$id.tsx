@@ -8,50 +8,50 @@ import { TopicModel } from '../../models/topic';
 import './$id.less';
 
 interface EditTopicState {
-    topic: TopicModel;
+  topic: TopicModel;
 }
 
 class Publish extends DefaultLayout<
-RouteComponentProps<{ id: string }>,
-EditTopicState
+  RouteComponentProps<{ id: string }>,
+  EditTopicState
 > {
-    state: EditTopicState = {
-        topic: {},
-    };
+  state: EditTopicState = {
+    topic: {},
+  };
 
-    async componentWillMount() {
-        const { id } = this.props.match.params;
-        const topic = await httpGet(`/api/topic/detail/${id}`);
-        this.setState({ topic: topic as TopicModel });
+  async componentWillMount() {
+    const { id } = this.props.match.params;
+    const topic = await httpGet(`/api/topic/detail/${id}`);
+    this.setState({ topic: topic as TopicModel });
+  }
+
+  renderContent(): JSX.Element {
+    return (
+      <TopicEditor
+        title="修改主题"
+        topic={this.state.topic}
+        onSave={this.onSave.bind(this)}
+      />
+    );
+  }
+
+  renderSide(): JSX.Element {
+    return null;
+  }
+
+  async onSave({ title, content, type }) {
+    const { id } = await httpPost('/api/topic/edit', {
+      id: this.state.topic.id,
+      content,
+      title,
+      type,
+    });
+
+    if (id) {
+      Message.success('修改成功');
+      this.props.history.push(`/detail/${id}`);
     }
-
-    renderContent(): JSX.Element {
-        return (
-            <TopicEditor
-                title="修改主题"
-                topic={this.state.topic}
-                onSave={this.onSave.bind(this)}
-            />
-        );
-    }
-
-    renderSide(): JSX.Element {
-        return null;
-    }
-
-    async onSave({ title, content, type }) {
-        const { id } = await httpPost('/api/topic/edit', {
-            id: this.state.topic.id,
-            content,
-            title,
-            type,
-        });
-
-        if (id) {
-            Message.success('修改成功');
-            this.props.history.push(`/detail/${id}`);
-        }
-    }
+  }
 }
 
 export default withRouter(Publish);

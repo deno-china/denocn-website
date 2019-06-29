@@ -8,14 +8,15 @@ import './index.less';
 import { ViewsRouter } from './routes';
 
 moment.locale('zh-cn');
+
 class App extends React.Component {
-    render() {
-        return <ViewsRouter />;
-    }
+  render() {
+    return <ViewsRouter/>;
+  }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App/>, document.getElementById('app'));
 
 setTimeout(() => {
-    finishRender();
+  finishRender();
 }, 2000);

@@ -4,18 +4,18 @@ import CodeRender from './code-render';
 import './style.less';
 
 interface IMarkdownPreviewProps {
-    content: string;
+  content: string;
 }
 
 const MarkdownPreview: React.FunctionComponent<
-IMarkdownPreviewProps
+  IMarkdownPreviewProps
 > = props => (
-    <Markdown
-        className="com-markdown-preview"
-        source={props.content}
-        renderers={{ code: CodeRender }}
-        escapeHtml={false}
-    />
+  <Markdown
+    className="com-markdown-preview"
+    source={props.content}
+    renderers={{ code: CodeRender }}
+    escapeHtml={false}
+  />
 );
 
 export default MarkdownPreview;

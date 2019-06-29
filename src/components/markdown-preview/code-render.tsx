@@ -3,12 +3,12 @@ import React, { FunctionComponent } from 'react';
 import ReactHighlight from 'react-highlight';
 
 interface ICodeRenderProps {
-    language: string;
-    value: string;
+  language: string;
+  value: string;
 }
 
 const CodeRender: FunctionComponent<ICodeRenderProps> = props => (
-    <ReactHighlight className={props.language}>{props.value}</ReactHighlight>
+  <ReactHighlight className={props.language}>{props.value}</ReactHighlight>
 );
 
 export default CodeRender;
