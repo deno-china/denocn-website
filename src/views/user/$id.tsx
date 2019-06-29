@@ -6,7 +6,7 @@ import DefaultLayout from '../../components/layouts/default';
 import BasePanel from '../../components/panels/base-panel';
 import FriendsLinkPanel from '../../components/panels/friends-link';
 import QQGroupPanel from '../../components/panels/qq-group';
-import { UserModel } from '../../models/User';
+import { UserModel } from '../../models/user';
 import userStore from '../../store/user';
 import './$id.less';
 

@@ -3,7 +3,7 @@ import moment from 'moment';
 import { httpGet } from '../common/request';
 import { ReplyModel } from '../models/reply';
 import { TopicModel } from '../models/topic';
-import { UserModel } from '../models/User';
+import { UserModel } from '../models/user';
 
 export interface TopicDetail extends TopicModel {
   author?: UserModel;
