@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { FunctionComponent } from 'react';
 import './index.less';
 
@@ -28,6 +27,7 @@ const Pagination: FunctionComponent<PaginationProps> = ({
   return (
     <ul className="com-pagination">
       <li
+        role="button"
         className={page === 1 ? 'active' : ''}
         onClick={() => onChange(1, size)}
       >
@@ -37,12 +37,14 @@ const Pagination: FunctionComponent<PaginationProps> = ({
         <li
           className={page === index + start ? 'active' : ''}
           key={index}
+          role="button"
           onClick={() => onChange(index + start, size)}
         >
           {index + start}
         </li>
       ))}
       <li
+        role="button"
         className={page === lastPage ? 'active' : ''}
         onClick={() => onChange(lastPage, size)}
       >

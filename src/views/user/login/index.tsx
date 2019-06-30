@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './index.less';
 
-export default class Login extends Component {
-  render() {
-    return <div>Login</div>;
-  }
-}
+type Props = {}
+const Login: React.FunctionComponent<Props> = () => <div>Login</div>;
+export default Login;

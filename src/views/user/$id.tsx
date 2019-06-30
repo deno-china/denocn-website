@@ -13,7 +13,7 @@ import './$id.less';
 @observer
 class ProfileUser extends DefaultLayout<RouteComponentProps<{ id: string }>> {
   renderContent(): JSX.Element {
-    console.log(this.props.match.params.id);
+    // console.log(this.props.match.params.id);
     const user: UserModel = userStore.info;
     // const id = 1;
     return (

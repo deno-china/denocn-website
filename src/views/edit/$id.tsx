@@ -12,8 +12,8 @@ interface EditTopicState {
 }
 
 class Publish extends DefaultLayout<
-  RouteComponentProps<{ id: string }>,
-  EditTopicState
+RouteComponentProps<{ id: string }>,
+EditTopicState
 > {
   state: EditTopicState = {
     topic: {},
