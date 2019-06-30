@@ -11,7 +11,7 @@ interface EditorProps {
   value: string;
 }
 
-const Editor: FunctionComponent<EditorProps> = props => {
+const Editor: FunctionComponent<EditorProps> = (props) => {
   const editor = useRef(null);
   useEffect(() => {
     const listener = (event: ClipboardEvent) => {

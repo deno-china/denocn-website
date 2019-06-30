@@ -7,10 +7,16 @@
     "dev": "node ./dev.js",
     "build": "parcel build src/index.html --no-cache",
     "lint:js": "eslint --ext .js,.jsx,.ts,.tsx src --fix",
-    "prettier": "prettier \"**/*.{ts,tsx,js,jsx,json,md}\" --write"
+    "prettier": "prettier \"**/*.{ts,tsx,js,jsx,json,md}\" --write",
+    "lint-staged": "lint-staged"
   },
   "assetsPath": "./public",
   "devDependencies": {
+    "@types/node": "^11.13.7",
+    "@types/react": "^16.8.14",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-router": "^4.4.5",
+    "@types/react-router-dom": "^4.3.2",
     "@types/react-highlight": "^0.12.1",
     "@typescript-eslint/eslint-plugin": "^1.11.0",
     "@typescript-eslint/parser": "^1.11.0",
@@ -27,8 +33,10 @@
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.14.2",
+    "husky": "^2.7.0",
     "json-server": "^0.14.0",
     "less": "^3.9.0",
+    "lint-staged": "^8.2.1",
     "npm-run-all": "^4.1.5",
     "parcel-bundler": "^1.12.3",
     "parcel-proxy-server": "^1.1.0",
@@ -39,11 +47,6 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
-    "@types/node": "^11.13.7",
-    "@types/react": "^16.8.14",
-    "@types/react-dom": "^16.8.4",
-    "@types/react-router": "^4.4.5",
-    "@types/react-router-dom": "^4.3.2",
     "antd": "^3.19.7",
     "autoprefixer": "^9.5.1",
     "axios": "^0.19.0",
@@ -63,6 +66,27 @@
     "react-router-dom": "^5.0.0",
     "react-simplemde-editor": "^4.0.2",
     "reflect-metadata": "^0.1.13"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "**/*.{ts,tsx,jsx,js}": [
+        "eslint --fix",
+        "git add"
+      ],
+      "**/*.{json,md,less}": [
+        "prettier --write",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "**/dist/**/*",
+      "**/.cache/**/*"
+    ]
   },
   "keywords": [],
   "author": "",

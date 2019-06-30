@@ -8,7 +8,7 @@ interface IMarkdownPreviewProps {
 }
 
 const MarkdownPreview: React.FunctionComponent<
-  IMarkdownPreviewProps
+IMarkdownPreviewProps
 > = props => (
   <Markdown
     className="com-markdown-preview"

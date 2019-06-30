@@ -10,7 +10,7 @@ interface userInfoPanelProps {
   title?: string;
 }
 
-const UserInfoPanel: FunctionComponent<userInfoPanelProps> = props => {
+const UserInfoPanel: FunctionComponent<userInfoPanelProps> = (props) => {
   if (!props.user) return null;
   return (
     <BasePanel className="panel-user-info" header={props.title || '用户'}>
@@ -25,7 +25,9 @@ const UserInfoPanel: FunctionComponent<userInfoPanelProps> = props => {
           {props.user.nick_name}
         </Link>
         <div className="score">
-          积分: <span>{props.user.score}</span>
+          积分:
+          {' '}
+          <span>{props.user.score}</span>
         </div>
       </div>
       <div className="bio">{props.user.signature}</div>

@@ -16,12 +16,16 @@ const RepliesPanel: FunctionComponent<RepliesPanelProps> = ({ replies }) => {
     <BasePanel
       white
       className="panel-detail-replies"
-      header={
+      header={(
         <div>
           <FontAwesomeIcon icon={faComments} style={{ marginRight: 10 }} />
-          共有 {replies.length} 条回复
+          共有
+          {' '}
+          {replies.length}
+          {' '}
+条回复
         </div>
-      }
+      )}
     >
       <ul>
         {replies.map((reply, index) => (
@@ -34,7 +38,10 @@ const RepliesPanel: FunctionComponent<RepliesPanelProps> = ({ replies }) => {
             <div className="right">
               <div className="author">
                 <span className="name">{reply.author_nick_name}</span>
-                <span className="floor">{index + 1}楼</span>
+                <span className="floor">
+                  {index + 1}
+楼
+                </span>
                 <span className="time">{reply.created_at}</span>
               </div>
               <MarkdownPreview content={reply.content} />
