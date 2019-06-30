@@ -43,7 +43,7 @@ const AddReply: FunctionComponent<AddReplyProps> = ({ topicId, replyTo }) => {
       <BasePanel
         white
         className="panel-detail-add-reply"
-        header={
+        header={(
           <>
             <div>
               <FontAwesomeIcon
@@ -57,7 +57,7 @@ const AddReply: FunctionComponent<AddReplyProps> = ({ topicId, replyTo }) => {
               提交
             </button>
           </>
-        }
+        )}
       >
         <div className="tips">
           <FontAwesomeIcon icon={faInfoCircle} />

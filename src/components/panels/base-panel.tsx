@@ -8,7 +8,7 @@ interface basePanelProps {
   className?: string;
 }
 
-const BasePanel: FunctionComponent<basePanelProps> = props => {
+const BasePanel: FunctionComponent<basePanelProps> = (props) => {
   const cls = [
     'base-panel ',
     props.white ? 'base-panel-white' : '',

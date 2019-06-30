@@ -60,7 +60,9 @@ class Detail extends DefaultLayout<RouteComponentProps<{ id?: string }>> {
           {detailStore.topic.is_good && <i className="tag">精华</i>}
           <span className="time">
             <FontAwesomeIcon icon={faClock} color="#bbb" />
-            发布于 {detailStore.topic.created_at}
+            发布于
+            {' '}
+            {detailStore.topic.created_at}
           </span>
           <span className="icon">
             <FontAwesomeIcon icon={faCommentDots} />

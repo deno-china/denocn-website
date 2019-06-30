@@ -66,7 +66,7 @@ export default class TopicEditor extends Component<EditorProps, EditorState> {
         <BasePanel
           className="com-topic-editor"
           white
-          header={
+          header={(
             <>
               <h4>
                 <FontAwesomeIcon className="icon" icon={faEdit} />
@@ -76,7 +76,7 @@ export default class TopicEditor extends Component<EditorProps, EditorState> {
                 提交
               </button>
             </>
-          }
+          )}
         >
           <div className="form">
             <select

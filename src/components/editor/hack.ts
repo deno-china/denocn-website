@@ -1,6 +1,5 @@
 function replaceSelection(cm, active, startEnd, url) {
-  if (/editor-preview-active/.test(cm.getWrapperElement().lastChild.className))
-    return;
+  if (/editor-preview-active/.test(cm.getWrapperElement().lastChild.className)) return;
 
   let text;
   let start = startEnd[0];

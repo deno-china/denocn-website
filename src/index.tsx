@@ -11,11 +11,11 @@ moment.locale('zh-cn');
 
 class App extends React.Component {
   render() {
-    return <ViewsRouter/>;
+    return <ViewsRouter />;
   }
 }
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
 
 setTimeout(() => {
   finishRender();
