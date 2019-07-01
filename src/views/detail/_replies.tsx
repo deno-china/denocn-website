@@ -1,6 +1,7 @@
 import { faComments } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { FunctionComponent } from 'react';
+import { Link } from 'react-router-dom';
 import MarkdownPreview from '../../components/markdown-preview';
 import BasePanel from '../../components/panels/base-panel';
 import { ReplyDetail } from '../../store/detail';
@@ -23,24 +24,28 @@ const RepliesPanel: FunctionComponent<RepliesPanelProps> = ({ replies }) => {
           {' '}
           {replies.length}
           {' '}
-条回复
+          条回复
         </div>
       )}
     >
       <ul>
         {replies.map((reply, index) => (
           <li key={reply.id}>
-            <img
-              className="avatar"
-              src={reply.author_avatar}
-              alt={reply.author_nick_name}
-            />
+            <Link to={`/user/${reply.author_id}`}>
+              <img
+                className="avatar"
+                src={reply.author_avatar}
+                alt={reply.author_nick_name}
+              />
+            </Link>
             <div className="right">
               <div className="author">
-                <span className="name">{reply.author_nick_name}</span>
+                <Link to={`/user/${reply.author_id}`}>
+                  <span className="name">{reply.author_nick_name}</span>
+                </Link>
                 <span className="floor">
                   {index + 1}
-楼
+                  楼
                 </span>
                 <span className="time">{reply.created_at}</span>
               </div>
