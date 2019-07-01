@@ -1,8 +1,9 @@
-@import "../../common.less";
+@import '../../common.less';
 
 .page-detail {
   > .header {
     padding: 20px 20px;
+
     .tag {
       display: inline;
       border-radius: 3px;
@@ -14,25 +15,31 @@
       font-style: normal;
       color: #fff;
     }
+
     h2 {
       margin: 0 0;
       margin-bottom: 10px;
+
       .type {
         margin-right: 10px;
         color: #999;
         font-weight: normal;
       }
     }
+
     .icon {
       margin-left: 10px;
       color: #bbb;
     }
+
     svg {
       margin-right: 5px;
     }
+
     .ops {
       margin-top: 10px;
       font-size: 12px;
+
       button {
         padding: 3px 5px;
         margin-right: 10px;
@@ -41,15 +48,28 @@
         cursor: pointer;
         border-radius: 4px;
       }
+
       .edit {
         background-color: @primary;
       }
+
       .del {
         background-color: rgb(255, 136, 136);
       }
     }
   }
+
   > .body {
     padding: 0;
+  }
+}
+
+.page-not-logged {
+  &.base-panel {
+    border-top-color: #eee;
+  }
+
+  .tip {
+    padding-bottom: 10px;
   }
 }

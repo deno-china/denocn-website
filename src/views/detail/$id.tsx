@@ -41,12 +41,12 @@ class Detail extends DefaultLayout<RouteComponentProps<{ id?: string }>> {
         <RepliesPanel replies={detailStore.replies} />
         {isLogged && <AddReply topicId={detailStore.topic.id} />}
         {!isLogged && (
-          <div>
-            <p>登录后发表评论!</p>
+          <BasePanel className="page-not-logged">
+            <div className="tip">登录后发表评论!</div>
             <a className="btn green" href="/api/user/login">
               通过Github登录
             </a>
-          </div>
+          </BasePanel>
         )}
 
       </>
