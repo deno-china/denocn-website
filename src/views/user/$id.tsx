@@ -12,9 +12,14 @@ import './$id.less';
 
 @observer
 class ProfileUser extends DefaultLayout<RouteComponentProps<{ id: string }>> {
+  componentWillMount() {
+    const { id } = this.props.match.params;
+    userStore.loadUserInfo(id);
+  }
+
   renderContent(): JSX.Element {
     // console.log(this.props.match.params.id);
-    const user: UserModel = userStore.info;
+    const user: UserModel = userStore.userInfo;
     // const id = 1;
     return (
       <BasePanel white header="用户信息" className="page-user">
@@ -50,10 +55,6 @@ class ProfileUser extends DefaultLayout<RouteComponentProps<{ id: string }>> {
         <QQGroupPanel />
       </>
     );
-  }
-
-  componentWillMount() {
-    // const { id } = this.props.match.params;
   }
 }
 export default ProfileUser;
