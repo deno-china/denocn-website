@@ -7,13 +7,15 @@ type RouteDef = {
   exact?: boolean;
   component?: any;
 };
-
+// eslint-disable-next-line
 const views: any = require('./views/**/*.tsx');
 
-function getRoutes(views: any, parent: string) {
-  const routeNames = Object.keys(views).filter(name => !name.startsWith('_'));
-  routeNames.forEach(name => {
-    const view = views[name];
+const routes: RouteDef[] = [];
+
+function getRoutes(list: any, parent: string) {
+  const routeNames = Object.keys(list).filter(name => !name.startsWith('_'));
+  routeNames.forEach((name) => {
+    const view = list[name];
     const viewComponent = view.default;
     if (viewComponent) {
       let path;
@@ -31,12 +33,12 @@ function getRoutes(views: any, parent: string) {
       };
       routes.push(route);
     } else {
-      getRoutes(views[name], `${parent + (name === 'index' ? '' : name)}/`);
+      getRoutes(list[name], `${parent + (name === 'index' ? '' : name)}/`);
     }
   });
 }
 
-const routes: RouteDef[] = [];
+
 getRoutes(views, '/');
 
 /**
@@ -49,11 +51,12 @@ getRoutes(views, '/');
 @observer
 class ViewsRouter extends Component<any, {}> {
   readonly state = {
-    routes: routes.sort((a, b) => {
+    routes: routes.sort((a) => {
       // 带有exact的排在最前面
       if (a.exact) return -1;
       // 带有参数的路由排在后面
       if (a.path.indexOf('/:') > -1) return 1;
+      return -1;
     }),
   };
 
@@ -75,4 +78,5 @@ class ViewsRouter extends Component<any, {}> {
     );
   }
 }
+
 export { ViewsRouter };

@@ -26,7 +26,7 @@ class Store {
   async load(id: string | number) {
     const topic: TopicDetail = await httpGet(`/api/topic/detail/${id}`, {});
     topic.created_at = moment(topic.created_at).fromNow();
-    const { list, total, page } = await httpGet(`/api/reply/list/${id}`);
+    const { list } = await httpGet(`/api/reply/list/${id}`);
     this.replies = (list as ReplyDetail[]).map(reply => ({
       ...reply,
       created_at: moment(reply.created_at).fromNow(),

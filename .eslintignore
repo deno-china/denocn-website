@@ -1,8 +1,2 @@
 # Created by .ignore support plugin (hsz.mobi)
-dev.js
-src/common/request.ts
-src/components/layouts/default.tsx
-src/routes.tsx
-src/store/detail.ts
-src/views/edit/$id.tsx
-src/views/index/index.tsx
+

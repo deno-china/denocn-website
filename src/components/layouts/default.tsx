@@ -4,6 +4,10 @@ import Header from '../header';
 import './default.less';
 
 abstract class DefaultLayout<P = any, S = any> extends Component<P, S> {
+  abstract renderContent(): JSX.Element;
+
+  abstract renderSide(): JSX.Element;
+
   render() {
     const sides = this.renderSide();
     return (
@@ -17,9 +21,6 @@ abstract class DefaultLayout<P = any, S = any> extends Component<P, S> {
       </div>
     );
   }
-
-  abstract renderContent(): JSX.Element;
-
-  abstract renderSide(): JSX.Element;
 }
+
 export default DefaultLayout;

@@ -44,7 +44,9 @@ const Editor: FunctionComponent<EditorProps> = (props) => {
   }, []);
   return (
     <SimpleMDE
-      getMdeInstance={instance => (editor.current = instance)}
+      getMdeInstance={(instance) => {
+        editor.current = instance;
+      }}
       value={props.value}
       onChange={props.onChange}
       options={editorOptions}
