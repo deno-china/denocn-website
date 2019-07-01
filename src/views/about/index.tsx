@@ -1,11 +1,13 @@
 import React from 'react';
 import DefaultLayout from '../../components/layouts/default';
-import './index.less';
 import MarkdownPreview from '../../components/markdown-preview';
+import './index.less';
 
 export default class About extends DefaultLayout {
   componentWillMount() {
-    fetch('http://127.0.0.1:1234/about.md').then(res => res.text()).then(text => this.setState({ content: text }));
+    fetch('/about.md')
+      .then(res => res.text())
+      .then(text => this.setState({ content: text }));
   }
 
   state = { content: '' };

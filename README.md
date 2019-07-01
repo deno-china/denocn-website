@@ -60,7 +60,7 @@ C:\Windows\System32\drivers\etc\hosts
 ```js
 // ... 其他不变
 // 请求地址设置为线上地址
-const targetHost = 'http://api.denocn.org';
+const targetHost = 'http://api.denocn.org:3000';
 
 const server = new ParcelProxyServer({
   entryPoint: './src/index.html',
