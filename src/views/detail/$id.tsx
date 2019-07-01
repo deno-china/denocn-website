@@ -31,6 +31,7 @@ class Detail extends DefaultLayout<RouteComponentProps<{ id?: string }>> {
   }
 
   renderContent(): JSX.Element {
+    const isLogged = Boolean(userStore.info && userStore.info.id);
     return (
       <>
         <BasePanel white className="page-detail" header={this.renderHeader()}>
@@ -38,8 +39,16 @@ class Detail extends DefaultLayout<RouteComponentProps<{ id?: string }>> {
         </BasePanel>
 
         <RepliesPanel replies={detailStore.replies} />
+        {isLogged && <AddReply topicId={detailStore.topic.id} />}
+        {!isLogged && (
+          <div>
+            <p>登录后发表评论!</p>
+            <a className="btn green" href="/api/user/login">
+              通过Github登录
+            </a>
+          </div>
+        )}
 
-        <AddReply topicId={detailStore.topic.id} />
       </>
     );
   }
