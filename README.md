@@ -79,25 +79,9 @@ const server = new ParcelProxyServer({
 
 ## 持续集成
 
-前端部分通过 **Netilfy** 持续部署。通过 redirects 实现单页以及 api 代理。
+前端部分通过 **Travis** 、 **Docker**  持续部署。通过 Nginx 实现单页以及 api 代理。
 
-```toml
-[build]
-  base    = ""
-  command = "npm run build"
-  publish = "dist"
-
-[[redirects]]
-  from = "/api/*"
-  to = "http://api.denocn.org/:splat"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-```
+`master` build通过自动部署到线上环境。请各位Contributor做好review工作。
 
 ## API 列表
 
