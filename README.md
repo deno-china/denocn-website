@@ -1,5 +1,14 @@
 # Deno 中文社区前端部分
 
+[![Build Status](https://www.travis-ci.org/deno-china/website-fe.svg?branch=master)](https://www.travis-ci.org/deno-china/website-fe)
+![GitHub](https://img.shields.io/github/license/deno-china/website-fe.svg)
+[![Website](https://img.shields.io/website/https/denocn.org.svg?up_message=startup)](https://denocn.org)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/deno-china/website-fe/master.svg)
+![GitHub commit activity the past week, 4 weeks, year](https://img.shields.io/github/commit-activity/y/deno-china/website-fe.svg)
+![GitHub top language](https://img.shields.io/github/languages/top/deno-china/website-fe.svg)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/deno-china/website-fe.svg)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/deno-china/website-fe/pull/new)
+
 ## 安装
 
 ```bash
