@@ -18,9 +18,7 @@ class ProfileUser extends DefaultLayout<RouteComponentProps<{ id: string }>> {
   }
 
   renderContent(): JSX.Element {
-    // console.log(this.props.match.params.id);
     const user: UserModel = userStore.userInfo;
-    // const id = 1;
     return (
       <BasePanel white header="用户信息" className="page-user">
         <div className="register-time">
@@ -57,4 +55,5 @@ class ProfileUser extends DefaultLayout<RouteComponentProps<{ id: string }>> {
     );
   }
 }
+
 export default ProfileUser;

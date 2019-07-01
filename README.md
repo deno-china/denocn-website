@@ -1,5 +1,14 @@
 # Deno 中文社区前端部分
 
+[![Build Status](https://www.travis-ci.org/deno-china/website-fe.svg?branch=master)](https://www.travis-ci.org/deno-china/website-fe)
+![GitHub](https://img.shields.io/github/license/deno-china/website-fe.svg)
+[![Website](https://img.shields.io/website/https/denocn.org.svg?up_message=startup)](https://denocn.org)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/deno-china/website-fe/master.svg)
+![GitHub commit activity the past week, 4 weeks, year](https://img.shields.io/github/commit-activity/y/deno-china/website-fe.svg)
+![GitHub top language](https://img.shields.io/github/languages/top/deno-china/website-fe.svg)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/deno-china/website-fe.svg)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/deno-china/website-fe/pull/new)
+
 ## 安装
 
 ```bash
@@ -70,25 +79,9 @@ const server = new ParcelProxyServer({
 
 ## 持续集成
 
-前端部分通过 **Netilfy** 持续部署。通过 redirects 实现单页以及 api 代理。
+前端部分通过 **Travis** 、 **Docker**  持续部署。通过 Nginx 实现单页以及 api 代理。
 
-```toml
-[build]
-  base    = ""
-  command = "npm run build"
-  publish = "dist"
-
-[[redirects]]
-  from = "/api/*"
-  to = "http://api.denocn.org/:splat"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-```
+`master` build通过自动部署到线上环境。请各位Contributor做好review工作。
 
 ## API 列表
 
