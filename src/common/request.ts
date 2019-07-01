@@ -22,12 +22,10 @@ axios.interceptors.response.use((response) => {
   throw response.data.msg;
 });
 
-// @ts-ignore
 export async function httpPost<T = any>(url: string, data?: any) {
   return (await axios.post(url, data)) as T;
 }
 
-// @ts-ignore
 export async function httpGet<T = any>(url: string, params?: any) {
   return (await axios.get(url, { params })) as T;
 }
