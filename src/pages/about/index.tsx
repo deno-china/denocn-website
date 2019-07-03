@@ -17,6 +17,7 @@ export default class About extends DefaultLayout {
   }
 
   renderSide(): JSX.Element {
+    // @ts-ignore
     return null;
   }
 }
