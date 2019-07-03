@@ -5,8 +5,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { FunctionComponent, useCallback, useState } from 'react';
+import { message, Spin } from 'antd';
 import { httpPost } from '../../common/request';
-import { Message, Spin } from '../../components/antd';
 import Editor from '../../components/editor';
 import BasePanel from '../../components/panels/base-panel';
 import detailStore from '../../store/detail';
@@ -22,7 +22,7 @@ const AddReply: FunctionComponent<AddReplyProps> = ({ topicId, replyTo }) => {
   const [loading, setLoading] = useState(false);
   const onCommit = useCallback(async () => {
     if (!content.trim().length) {
-      Message.error('请输入内容');
+      message.error('请输入内容');
       return;
     }
     setLoading(true);

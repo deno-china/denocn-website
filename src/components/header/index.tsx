@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'umi/link';
 import logo from '../../assets/imgs/logo.svg';
 import userStore from '../../store/user';
 import './index.less';

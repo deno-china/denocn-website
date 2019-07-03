@@ -5,7 +5,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { FunctionComponent } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'umi/link';
 import { TopicListItem } from '../../store/topic';
 
 interface TopicItemProps {

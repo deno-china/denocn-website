@@ -4,3 +4,4 @@ package-lock.json
 .cache/
 .idea
 yarn.lock
+src/pages/.umi

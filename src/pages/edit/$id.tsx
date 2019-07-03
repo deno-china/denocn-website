@@ -1,7 +1,6 @@
 import React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router';
+import { message } from 'antd';
 import { httpGet, httpPost } from '../../common/request';
-import { Message } from '../../components/antd';
 import DefaultLayout from '../../components/layouts/default';
 import TopicEditor from '../../components/topic-editor';
 import { TopicModel } from '../../models/topic';
@@ -11,10 +10,7 @@ interface EditTopicState {
   topic: TopicModel;
 }
 
-class Publish extends DefaultLayout<
-RouteComponentProps<{ id: string }>,
-EditTopicState
-> {
+class Publish extends DefaultLayout<any, EditTopicState> {
   state: EditTopicState = {
     topic: {},
   };
@@ -36,10 +32,11 @@ EditTopicState
   }
 
   renderSide(): JSX.Element {
+    // @ts-ignore
     return null;
   }
 
-  async onSave({ title, content, type }) {
+  async onSave({ title, content, type }: { title: string; content: string; type: string }) {
     const { id } = await httpPost('/api/topic/edit', {
       id: this.state.topic.id,
       content,
@@ -48,10 +45,10 @@ EditTopicState
     });
 
     if (id) {
-      Message.success('修改成功');
+      message.success('修改成功');
       this.props.history.push(`/detail/${id}`);
     }
   }
 }
 
-export default withRouter(Publish);
+export default Publish;

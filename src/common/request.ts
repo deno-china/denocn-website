@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { Message } from '../components/antd';
+import { message } from 'antd';
 
 const baseURL = '/';
 let token_value = '';
@@ -18,7 +18,7 @@ axios.interceptors.response.use((response) => {
     return response.data.data;
   }
   // error
-  Message.error(response.data.msg);
+  message.error(response.data.msg);
   throw response.data.msg;
 });
 

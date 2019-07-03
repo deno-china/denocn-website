@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'umi/link';
 import { UserModel } from '../../models/user';
 import BasePanel from './base-panel';
 import './login-user.less';

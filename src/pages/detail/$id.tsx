@@ -6,11 +6,10 @@ import {
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Modal from 'antd/es/modal';
+import { Modal } from 'antd';
 import { observer } from 'mobx-react';
 import React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
+import Link from 'umi/link';
 import { httpGet } from '../../common/request';
 import DefaultLayout from '../../components/layouts/default';
 import MarkdownPreview from '../../components/markdown-preview';
@@ -23,9 +22,10 @@ import userStore from '../../store/user';
 import './$id.less';
 import AddReply from './_add-reply';
 import RepliesPanel from './_replies';
+import { UserModel } from '../../models/user';
 
 @observer
-class Detail extends DefaultLayout<RouteComponentProps<{ id?: string }>> {
+class Detail extends DefaultLayout<any> {
   componentWillMount() {
     detailStore.load(this.props.match.params.id);
   }
@@ -35,11 +35,11 @@ class Detail extends DefaultLayout<RouteComponentProps<{ id?: string }>> {
     return (
       <>
         <BasePanel white className="page-detail" header={this.renderHeader()}>
-          <MarkdownPreview content={detailStore.topic.content} />
+          <MarkdownPreview content={detailStore.topic.content || ''} />
         </BasePanel>
 
         <RepliesPanel replies={detailStore.replies} />
-        {isLogged && <AddReply topicId={detailStore.topic.id} />}
+        {isLogged && <AddReply topicId={detailStore.topic.id as number} />}
         {!isLogged && (
           <BasePanel className="page-not-logged">
             <div className="tip">登录后发表评论!</div>
@@ -48,7 +48,6 @@ class Detail extends DefaultLayout<RouteComponentProps<{ id?: string }>> {
             </a>
           </BasePanel>
         )}
-
       </>
     );
   }
@@ -92,7 +91,8 @@ class Detail extends DefaultLayout<RouteComponentProps<{ id?: string }>> {
             </Link>
             <button
               className="del"
-              onClick={this.deleteTopic.bind(this, detailStore.topic.id)}
+              onClick={this.deleteTopic.bind(this, detailStore.topic
+                .id as number)}
             >
               <FontAwesomeIcon icon={faTrash} />
               删除
@@ -106,7 +106,10 @@ class Detail extends DefaultLayout<RouteComponentProps<{ id?: string }>> {
   renderSide(): JSX.Element {
     return (
       <>
-        <UserInfoPanel title="作者" user={detailStore.topic.author} />
+        <UserInfoPanel
+          title="作者"
+          user={detailStore.topic.author as UserModel}
+        />
         <FriendsLinkPanel />
         <QQGroupPanel />
       </>
@@ -125,4 +128,4 @@ class Detail extends DefaultLayout<RouteComponentProps<{ id?: string }>> {
   }
 }
 
-export default withRouter(Detail);
+export default Detail;

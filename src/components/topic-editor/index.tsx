@@ -1,8 +1,7 @@
 import { faEdit, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Spin from 'antd/es/spin';
+import { Spin, message } from 'antd';
 import React, { Component } from 'react';
-import { Message } from '../antd';
 import Editor from '../editor';
 import BasePanel from '../panels/base-panel';
 import { TopicModel } from '../../models/topic';
@@ -31,6 +30,7 @@ export default class TopicEditor extends Component<EditorProps, EditorState> {
 
   componentWillReceiveProps(props: EditorProps) {
     const topic: TopicModel = props.topic || {};
+    // @ts-ignore
     this.setState({
       content: topic.content,
       title: topic.title,
@@ -40,11 +40,11 @@ export default class TopicEditor extends Component<EditorProps, EditorState> {
 
   async onSave() {
     if (!this.state.title || this.state.title.length < 10) {
-      Message.error('标题至少10个字符');
+      message.error('标题至少10个字符');
       return;
     }
     if (!this.state.content || this.state.content.length < 20) {
-      Message.error('内容至少20个字符');
+      message.error('内容至少20个字符');
       return;
     }
 

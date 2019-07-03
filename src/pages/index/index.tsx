@@ -1,7 +1,6 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { withRouter, RouteComponentProps } from 'react-router';
-import { Link } from 'react-router-dom';
+import Link from 'umi/link';
 import DefaultLayout from '../../components/layouts/default';
 import Pagination from '../../components/pagination';
 import BasePanel from '../../components/panels/base-panel';
@@ -13,7 +12,6 @@ import userStore from '../../store/user';
 import './index.less';
 import Topic from './_Topic';
 
-
 const types = [
   { type: 'all', title: '全部' },
   { type: 'good', title: '精华' },
@@ -23,7 +21,7 @@ const types = [
 ];
 
 @observer
-class Home extends DefaultLayout<RouteComponentProps> {
+class Home extends DefaultLayout<any> {
   componentWillMount() {
     const params = new URLSearchParams(this.props.location.search);
     const type = params.get('type') || 'all';
@@ -89,4 +87,4 @@ class Home extends DefaultLayout<RouteComponentProps> {
   }
 }
 
-export default withRouter(Home);
+export default Home;

@@ -1,7 +1,5 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { RouteComponentProps } from 'react-router';
-import 'reflect-metadata';
 import DefaultLayout from '../../components/layouts/default';
 import BasePanel from '../../components/panels/base-panel';
 import FriendsLinkPanel from '../../components/panels/friends-link';
@@ -11,7 +9,7 @@ import userStore from '../../store/user';
 import './$id.less';
 
 @observer
-class ProfileUser extends DefaultLayout<RouteComponentProps<{ id: string }>> {
+class ProfileUser extends DefaultLayout<any> {
   componentWillMount() {
     const { id } = this.props.match.params;
     userStore.loadUserInfo(id);

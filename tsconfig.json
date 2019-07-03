@@ -1,10 +1,18 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
     "jsx": "react",
-    "types": ["node", "dom", "./typings.d.ts"]
-  },
-  "include": ["src/**/*.tsx", "src/**/*.ts", "typings.d.ts"]
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "strict": true,
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "allowSyntheticDefaultImports": true
+  }
 }

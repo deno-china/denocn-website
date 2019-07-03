@@ -12,76 +12,34 @@
 ## 安装
 
 ```bash
-npm install
+$ npm install
 ```
 
 ## 运行
 
 ```bash
-npm run dev
+$ npm run dev
 ```
 
-浏览器输入 [http://localhost:1234](http://localhost:1234)。
+浏览器输入 [http://localhost:8000](http://localhost:8000) 查看效果。
 
-## 使用线上地址开发
-
-### 1. 更改电脑 **hosts**
-
-#### Mac 更改 **hosts**
+## 打包
 
 ```bash
-sudo vim  /private/etc/hosts # 需要管理员权限
+$ npm run build
 ```
 
-```
-127.0.0.1	localhost
-255.255.255.255	broadcasthost
-::1             localhost
-127.0.0.1	denocn.org # 增加此行配置
-```
+## 分析依赖包
 
-**更改 hosts 后，重启才能生效！**
-
-#### Windows 更改 **hosts**
-
-```
-# 需要管理员权限
-# win10 hosts 文件位置
-C:\Windows\System32\drivers\etc\hosts
-```
-
-更改 **hosts** 后，将导致 [https://denocn.org](https://denocn.org)无法访问。
-开发完成后，使用 **#** 注释掉添加的配置即可。
-
-### 2. 修改 [dev.js](dev.js)
-
-更改为如下配置：
-
-```js
-// ... 其他不变
-// 请求地址设置为线上地址
-const targetHost = 'http://api.denocn.org:3000';
-
-const server = new ParcelProxyServer({
-  entryPoint: './src/index.html',
-  parcelOptions: {},
-  proxies: {
-    '/api': {
-      target: targetHost,
-    },
-    '/seo': {
-      target: targetHost,
-    },
-  },
-});
-// ... 其他不变
+```bash
+$ npm run analyze
 ```
 
 ## 持续集成
 
-前端部分通过 **Travis** 、 **Docker**  持续部署。通过 Nginx 实现单页以及 api 代理。
+前端部分通过 **Travis** 、 **Docker** 持续部署。通过 Nginx 实现单页以及 api 代理。
 
-`master` build通过自动部署到线上环境。请各位Contributor做好review工作。
+`master` build 通过自动部署到线上环境。请各位 Contributor 做好 review 工作。
 
 ## API 列表
 
