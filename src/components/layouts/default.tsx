@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import Footer from '../footer';
 import Header from '../header';
 import './default.less';
+import { setDocumentTitle } from '../../common/utils';
 
 abstract class DefaultLayout<P = any, S = any> extends Component<P, S> {
+  componentDidMount(): void {
+    setDocumentTitle('');
+  }
+
   abstract renderContent(): JSX.Element;
 
   abstract renderSide(): JSX.Element;

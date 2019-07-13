@@ -25,7 +25,7 @@ class ProfileUser extends DefaultLayout<any> {
         </div>
         <img className="avatar" src={user.avatar} alt={user.name} />
         <div className="name">
-          <span>{user.nick_name}</span>
+          <span className="nick-name">{user.nick_name}</span>
           <a href={`https://github.com/${user.github_name}`} className="github">
             {user.name}
           </a>
