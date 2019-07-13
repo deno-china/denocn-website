@@ -1,6 +1,7 @@
 import { observable, action } from 'mobx';
 import { UserModel } from '../models/user';
 import { httpGet } from '../common/request';
+import { setDocumentTitle } from '../common/utils';
 
 class Store {
   @observable
@@ -25,8 +26,9 @@ class Store {
    * @param id 用户id
    */
   @action
-  async loadUserInfo(id) {
+  async loadUserInfo(id: number) {
     const user = await httpGet<UserModel>(`/api/user/info/${id}`);
+    setDocumentTitle(user.nick_name);
     this.userInfo = user;
   }
 }

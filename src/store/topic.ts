@@ -29,10 +29,13 @@ class Store {
 
   @action
   async load() {
-    const { total, list } = await httpGet(`/api/topic/${this.type}`, {
+    const { total = 0, list = [] } = await httpGet(`/api/topic/${this.type}`, {
       page: this.page,
       size: this.pageSize,
     });
+    if (list && list.length === 0) {
+      return;
+    }
     this.total = total;
     this.list = list.map((item: TopicListItem) => ({
       ...item,
