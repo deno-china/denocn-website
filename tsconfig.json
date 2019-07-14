@@ -10,9 +10,6 @@
     "sourceMap": true,
     "baseUrl": ".",
     "strict": true,
-    "paths": {
-      "@/*": ["src/*"]
-    },
     "allowSyntheticDefaultImports": true
   }
 }
