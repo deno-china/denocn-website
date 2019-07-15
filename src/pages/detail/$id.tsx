@@ -39,7 +39,7 @@ class Detail extends DefaultLayout<any> {
         </BasePanel>
 
         <RepliesPanel replies={detailStore.replies} />
-        {isLogged && <AddReply topicId={detailStore.topic.id as number} />}
+        <AddReply topicId={detailStore.topic.id as number} />
         {!isLogged && (
           <BasePanel className="page-not-logged">
             <div className="tip">登录后发表评论!</div>

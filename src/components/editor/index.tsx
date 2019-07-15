@@ -26,7 +26,7 @@ const Editor: FunctionComponent<EditorProps> = (props) => {
             }
           }
           if (blob) {
-            const reader = new FileReader();
+            const reader: FileReader = new FileReader();
             reader.onload = async (evt: any) => {
               const base64 = evt.target.result;
               const path = await uploadBase64(base64);

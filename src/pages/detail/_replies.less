@@ -7,12 +7,15 @@
     > ul {
       > li {
         display: flex;
-        flex-direction: row;
         padding: 10px 0;
         border-bottom: 1px solid #eee;
 
         &:last-child {
           border-bottom: none;
+        }
+
+        .right {
+          flex: 1;
         }
 
         .avatar {
@@ -26,26 +29,35 @@
         .author {
           flex: 1;
           font-size: 13px;
-
-          .name {
-            font-size: 14px;
-            color: #404040;
-            margin-right: 10px;
-          }
-
-          .floor {
-            color: @primary;
-            margin-right: 10px;
-          }
-
-          .time {
-            color: #777;
-          }
+          position: relative;
 
           > a {
             color: #797776;
             text-decoration: underline;
+            min-width: 80px;
+            display: inline-block;
           }
+        }
+
+        .name {
+          font-size: 14px;
+          color: #404040;
+          margin-right: 10px;
+        }
+
+        .floor {
+          color: @primary;
+          margin-right: 10px;
+        }
+
+        .time {
+          color: #777;
+        }
+
+        .reply {
+          position: absolute;
+          right: 0;
+          top: 0;
         }
 
         .com-markdown-preview {
