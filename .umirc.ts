@@ -1,15 +1,17 @@
 import { IConfig } from 'umi-types';
 
-const targetHost = 'http://api.denocn.org';
+const targetHost = 'http://localhost:3000';
+// const targetHost = 'http://api.denocn.org:3000';
+
 // ref: https://umijs.org/config/
 const config: IConfig = {
   disableCSSModules: true, // 禁用 css modules
   proxy: {
     '/api': {
       target: targetHost,
-    },
-    '/seo': {
-      target: targetHost,
+      pathRewrite: {
+        '^/api': '/',
+      },
     },
   },
   // uglify.js 配置
@@ -31,7 +33,10 @@ const config: IConfig = {
       {
         antd: true,
         dva: false,
-        dynamicImport: { webpackChunkName: true, loadingComponent: './components/PageLoading/index' },
+        dynamicImport: {
+          webpackChunkName: true,
+          loadingComponent: './components/PageLoading/index',
+        },
         title: 'Deno中文社区',
         dll: false,
 

@@ -1,0 +1,50 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Build
+        run: |
+          yarn
+          yarn build
+      - uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: dist
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: [build, build-web]
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/download-artifact@master
+        with:
+          name: dist
+          path: dist
+      - name: Build Image
+        env:
+          DOCKER_USER: ${{ secrets.DOCKER_USER }}
+          DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+        run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS registry.cn-hongkong.aliyuncs.com
+          docker build ./ -t registry.cn-hongkong.aliyuncs.com/denocn/denocn-web
+          docker push registry.cn-hongkong.aliyuncs.com/denocn/denocn-web
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [publish]
+    steps:
+      - uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          password: ${{ secrets.DEPLOY_PASSWORD }}
+          port: 22
+          script: ${{ secrets.DEPLOY_SCRIPT }}
