@@ -1,6 +1,6 @@
 # Deno 中文社区前端部分
 
-[![Build Status](https://github.com/manyuanrong/beauty/workflows/CI/badge.svg)](https://github.com/deno-china/website-fe/actions)
+[![Build Status](https://github.com/deno-china/website/workflows/CI/badge.svg)](https://github.com/deno-china/website-fe/actions)
 ![GitHub](https://img.shields.io/github/license/deno-china/website-fe.svg)
 [![Website](https://img.shields.io/website/https/denocn.org.svg?up_message=startup)](https://denocn.org)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/deno-china/website-fe/master.svg)
