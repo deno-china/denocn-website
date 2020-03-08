@@ -2,3 +2,5 @@
 /public/*
 
 !/public/index.html
+!/public/imgs/
+!/public/favicon.ico

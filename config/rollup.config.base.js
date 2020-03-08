@@ -2,9 +2,11 @@
 // afect the deployment and dowload
 
 import commonjs from "rollup-plugin-commonjs";
+import lessPlugin from "rollup-plugin-less";
 import resolve from "rollup-plugin-node-resolve";
 import svelte from "rollup-plugin-svelte";
 import { terser } from "rollup-plugin-terser";
+import sveltePreprocess from "svelte-preprocess";
 
 export default function config({
   ssr = false,
@@ -30,8 +32,10 @@ export default function config({
         // a separate file — better for performance
         css: css => {
           css.write("public/bundle.css");
-        }
+        },
+        preprocess: sveltePreprocess({})
       }),
+      lessPlugin({ output: "public/app.css" }),
 
       // If you have external dependencies installed from
       // npm, you'll most likely need these plugins. In

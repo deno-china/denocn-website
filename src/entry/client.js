@@ -1,2 +1,8 @@
-import Index from "../pages/Index.svelte";
-const page = new Index({ target: document.body });
+import "../styles/app.less";
+import App from "../app.svelte";
+
+new App({
+  target: document.body,
+  // hydrate: true,
+  props: {}
+});
