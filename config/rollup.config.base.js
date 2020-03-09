@@ -7,6 +7,7 @@ import resolve from "rollup-plugin-node-resolve";
 import svelte from "rollup-plugin-svelte";
 import { terser } from "rollup-plugin-terser";
 import sveltePreprocess from "svelte-preprocess";
+const { markdown } = require("svelte-preprocess-markdown");
 
 export default function config({
   ssr = false,
@@ -25,6 +26,7 @@ export default function config({
     },
     plugins: [
       svelte({
+        extensions: [".svelte", ".md"],
         generate: ssr ? "ssr" : "dom",
         dev,
         hydratable: ssr,
@@ -33,7 +35,7 @@ export default function config({
         css: css => {
           css.write("public/bundle.css");
         },
-        preprocess: sveltePreprocess({})
+        preprocess: [sveltePreprocess({}), markdown()]
       }),
       lessPlugin({ output: "public/app.css" }),
 

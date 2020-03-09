@@ -6,14 +6,6 @@
 </script>
 
 <Router {url}>
-  <nav>
-    <Link to="/">Home</Link>
-    <Link to="about">About</Link>
-    <Link to="blog">Blog</Link>
-  </nav>
-  <div>
-    <Route path="about" component={About} />
-    <Route path="/" component={Index} />
-    <div>{url}</div>
-  </div>
+  <Route path="about" component={About} />
+  <Route path="/" component={Index} />
 </Router>

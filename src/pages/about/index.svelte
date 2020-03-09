@@ -1,5 +1,11 @@
 <script>
-  import DefaultLayout from "../../compontents/layouts/default.svelte";
+  import DefaultLayout from "../../components/layouts/default.svelte";
+  import AboutContent from "./about.md";
+  import Markdown from "../../components/markdown.svelte";
 </script>
 
-<DefaultLayout>About</DefaultLayout>
+<DefaultLayout>
+  <Markdown>
+    <AboutContent />
+  </Markdown>
+</DefaultLayout>
