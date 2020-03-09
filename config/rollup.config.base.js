@@ -14,12 +14,13 @@ export default function config({
   dev = false,
   input,
   outputFile,
+  sourcemap = true,
   format
 }) {
   return {
     input,
     output: {
-      sourcemap: true,
+      sourcemap,
       format,
       name: "app",
       file: outputFile

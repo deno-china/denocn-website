@@ -1,7 +1,6 @@
 <script>
   import Header from "../header.svelte";
   import Footer from "../footer.svelte";
-  const SLOTS = $$props.$$slots;
 </script>
 
 <style lang="less">
@@ -19,21 +18,12 @@
       > .content {
         flex: 1;
       }
-      .side {
-        width: 290px;
-        min-width: 200px;
-        margin-left: 20px;
-      }
     }
 
     @media (max-width: 1000px) {
       #main-wrapper {
         width: 100%;
         flex-direction: column;
-        .side {
-          margin-left: 0px;
-          width: 100%;
-        }
       }
     }
   }
@@ -45,11 +35,7 @@
     <div class="content">
       <slot />
     </div>
-    {#if SLOTS.side}
-      <div class="side">
-        <slot name="side" />
-      </div>
-    {/if}
+    <slot name="side" />
   </div>
   <Footer />
 </div>

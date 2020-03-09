@@ -1,2 +1,3 @@
-import app from "../pages/Index.svelte";
-export default app;
+import App from "../app.svelte";
+
+export default App;
