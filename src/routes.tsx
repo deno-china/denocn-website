@@ -1,12 +1,13 @@
-import { FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
 import About from "./pages/About";
+import ErrorPage from "./pages/Error";
 import GettingStart from "./pages/GettingStart";
 import Index from "./pages/Index";
 
 interface RouteInfo {
   path: string;
   exact?: boolean;
-  component: FunctionComponent;
+  component: FunctionComponent<any>;
 }
 
 const routes: RouteInfo[] = [
@@ -22,6 +23,14 @@ const routes: RouteInfo[] = [
   {
     path: "/getting-start",
     component: GettingStart
+  },
+  {
+    path: "/error",
+    component: ErrorPage
+  },
+  {
+    path: "*",
+    component: () => <ErrorPage title="404 NotFound" />
   }
 ];
 

@@ -6,14 +6,15 @@ import "./DefaultLayout.less";
 interface DefaultLayoutProps {
   children?: ReactNode;
   sides?: ReactNode;
+  className?: string;
 }
 
 export default function DefaultLayout(props: DefaultLayoutProps) {
-  const { children, sides } = props;
+  const { children, sides, className } = props;
   return (
-    <div className="layout-default">
+    <div className={`layout-default ${className}`}>
       <Header />
-      <div id="main-wrapper">
+      <div className="main-wrapper">
         <div className="content">{children}</div>
         {sides && <div className="side">{sides}</div>}
       </div>
