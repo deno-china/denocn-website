@@ -1,15 +1,19 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router";
-import Routes from "../routes";
+import App from "../App";
 
 globalThis.React = React;
 
-export default function render(props) {
+interface AppProps {
+  url?: string;
+}
+
+export default function render(props: AppProps) {
   const { url = "/" } = props;
   return renderToString(
     <StaticRouter location={{ pathname: url }}>
-      <Routes />
+      <App />
     </StaticRouter>
   );
 }

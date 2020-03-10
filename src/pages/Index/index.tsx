@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.less";
+import DefaultLayout from "../../components/layouts/DefaultLayout";
 
 export default function Index() {
-  return <div>Index</div>;
+  return <DefaultLayout>Index</DefaultLayout>;
 }

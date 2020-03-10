@@ -22,7 +22,7 @@
   },
   "scripts": {
     "dev": "parcel serve src/index.html --open",
-    "ssr:build": "parcel build --no-source-maps src/entry/server.jsx",
+    "ssr:build": "parcel build --no-source-maps src/entry/server.tsx",
     "ssr:esm": "rollup -c",
     "ssr:deno": "deno ssr.test.ts",
     "ssr": "run-s ssr:build ssr:esm ssr:deno",
