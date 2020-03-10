@@ -25,7 +25,8 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2"
+    "react-router-dom": "^5.1.2",
+    "regenerator": "^0.14.2"
   },
   "scripts": {
     "dev": "parcel serve src/index.html --open",

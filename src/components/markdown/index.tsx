@@ -1,6 +1,6 @@
 import hljs from "highlight.js";
 import marked from "marked";
-import React, { useLayoutEffect, useState, useMemo } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import MarkdownContainer from "./Container";
 
 const options: marked.MarkedOptions = {
@@ -24,10 +24,17 @@ interface MarkdownProps {
 
 export default function Markdown(props: MarkdownProps) {
   const { content, children } = props;
-  const html = useMemo(() => {
+  // const html = useMemo(() => {
+  //   const source = children || content || "";
+  //   const markedHtml = marked(source, options);
+  //   return markedHtml;
+  // }, [content, children]);
+
+  const [html, setHtml] = useState("");
+  useLayoutEffect(() => {
     const source = children || content || "";
     const markedHtml = marked(source, options);
-    return markedHtml;
+    setHtml(markedHtml);
   }, [content, children]);
 
   return <MarkdownContainer>{html}</MarkdownContainer>;

@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react";
+import { BasePage } from "./common/base-page";
 import About from "./pages/About";
 import ErrorPage from "./pages/Error";
 import GettingStart from "./pages/GettingStart";
@@ -7,30 +8,31 @@ import Index from "./pages/Index";
 interface RouteInfo {
   path: string;
   exact?: boolean;
-  component: FunctionComponent<any>;
+  page?: BasePage;
+  component?: FunctionComponent<any>;
 }
 
 const routes: RouteInfo[] = [
   {
     exact: true,
     path: "/",
-    component: Index
+    page: Index
   },
   {
     path: "/about",
-    component: About
+    page: About
   },
   {
     path: "/getting-start",
-    component: GettingStart
+    page: GettingStart
   },
   {
     path: "/error",
-    component: ErrorPage
+    page: ErrorPage
   },
   {
     path: "*",
-    component: () => <ErrorPage title="404 NotFound" />
+    component: () => <ErrorPage.page title="404 NotFound" />
   }
 ];
 
