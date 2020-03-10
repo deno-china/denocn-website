@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
 import About from "./pages/About";
+import GettingStart from "./pages/GettingStart";
 import Index from "./pages/Index";
 
 interface RouteInfo {
@@ -17,6 +18,10 @@ const routes: RouteInfo[] = [
   {
     path: "/about",
     component: About
+  },
+  {
+    path: "/getting-start",
+    component: GettingStart
   }
 ];
 
