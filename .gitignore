@@ -1,6 +1,3 @@
 /node_modules
-/public/*
-
-!/public/index.html
-!/public/imgs/
-!/public/favicon.ico
+.cache/
+dist/
