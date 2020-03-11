@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/imgs/logo.svg";
-import { BasePage } from '../../common/base-page';
+import { BasePage } from "../../common/base-page";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
 import "./index.less";
 
@@ -9,8 +9,8 @@ interface ErrorPageProps {
   title?: string;
 }
 
-const ErrorPage :BasePage={
-  page:(props:ErrorPageProps){
+const ErrorPage: BasePage = {
+  page: (props: ErrorPageProps) => {
     const { title = "发生错误", error = "" } = props;
     return (
       <DefaultLayout className="page-error">
@@ -21,6 +21,6 @@ const ErrorPage :BasePage={
       </DefaultLayout>
     );
   }
-}
+};
 
-export default ErrorPage
+export default ErrorPage;

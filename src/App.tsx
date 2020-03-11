@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router";
+import "regenerator-runtime/runtime";
 import routes from "./routes";
 
 const EmptyComponent = () => null;

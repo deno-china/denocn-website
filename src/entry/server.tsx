@@ -1,9 +1,8 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
-import { matchPath, StaticRouter } from "react-router";
-import "regenerator-runtime/runtime";
+import { StaticRouter } from "react-router";
 import App from "../App";
-import routes from "../routes";
+import { findRoute, prefetch } from "../common/route-utli";
 
 globalThis.React = React;
 
@@ -11,26 +10,10 @@ interface RenderProps {
   url?: string;
 }
 
-function findRoute(url: string) {
-  for (const route of routes) {
-    const match = matchPath(url, route);
-    if (match) {
-      return { match, route };
-    }
-  }
-}
-
 export default async function render(props: RenderProps) {
   const { url = "/" } = props;
-  const routeInfo = findRoute(url);
-  let state = {};
-  if (routeInfo) {
-    const { route, match } = routeInfo;
-    const prefetcher = route.page?.prefetch;
-    if (prefetcher) {
-      state = (await prefetcher(match)) || {};
-    }
-  }
+  let routeInfo = findRoute(url);
+  let state = prefetch(routeInfo);
   const html = renderToString(
     <StaticRouter location={{ pathname: url }}>
       <App {...state} />
