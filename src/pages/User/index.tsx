@@ -1,9 +1,12 @@
+import dayjs from "dayjs";
 import React from "react";
 import { match } from "react-router";
 import { BasePage } from "../../common/base-page";
 import GlobalData from "../../common/global";
 import BasePanel from "../../components/base-panel";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
+import FriendsLinkPanel from "../../components/panels/friends-link";
+import QQGroupPanel from "../../components/panels/qq-group";
 import "./index.less";
 
 const User: BasePage<{
@@ -19,11 +22,18 @@ const User: BasePage<{
   page(props) {
     const { user = {} } = props;
     return (
-      <DefaultLayout>
+      <DefaultLayout
+        sides={
+          <>
+            <FriendsLinkPanel />
+            <QQGroupPanel />
+          </>
+        }
+      >
         <BasePanel header="用户信息" className="page-user" style="white">
           <div className="register-time">
             注册于：
-            {user.created_at}
+            {dayjs(user.created_at).format("YYYY-MM-DD HH:mm:ss")}
           </div>
           <img className="avatar" src={user.avatar} alt={user.name} />
           <div className="name">
@@ -42,7 +52,7 @@ const User: BasePage<{
             </li>
             <li>
               <h6>主题</h6>
-              <span>{user.topic_count}</span>
+              <span>{user.topic_count || 0}</span>
             </li>
           </ul>
         </BasePanel>

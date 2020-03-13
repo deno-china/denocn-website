@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/imgs/logo.svg";
+import { useUserData } from "../../common/data-provider/user";
 import "./index.less";
 
 export default function Header() {
-  const user = null;
+  const [user] = useUserData();
   return (
     <header>
       <div className="inner">
