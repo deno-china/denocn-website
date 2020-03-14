@@ -7,26 +7,36 @@ import { findRoute, prefetch } from "./common/route-utli";
 
 const restore_state = (window as any)["__INIT_STATE__"] || {};
 
-function LocalPrefetcher(props: { onState(state: any): void }) {
-  const { onState } = props;
+function LocalPrefetcher(props: { onState(state: any): void; children?: any }) {
+  const { onState, children } = props;
+  const [prefetching, setPrefetching] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
     const { pathname } = location;
     const route = findRoute(pathname);
-    prefetch(route).then(onState);
+    if (route) {
+      prefetch(route)
+        .then(onState)
+        .then(() => {
+          setPrefetching(false);
+        });
+    } else {
+      setPrefetching(false);
+    }
   }, [location.pathname]);
 
-  return null;
+  return prefetching ? null : children;
 }
 
 function AppEntry() {
   const [state, setState] = useState(restore_state);
   return (
     <BrowserRouter>
-      <LocalPrefetcher onState={setState} />
       <ToastProvider>
-        <App {...state} />
+        <LocalPrefetcher onState={setState}>
+          <App {...state} />
+        </LocalPrefetcher>
       </ToastProvider>
     </BrowserRouter>
   );

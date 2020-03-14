@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { BasePage } from "./common/base-page";
 import About from "./pages/About";
+import Detail from "./pages/Detail";
 import ErrorPage from "./pages/Error";
 import GettingStart from "./pages/GettingStart";
 import Index from "./pages/Index";
@@ -35,6 +36,10 @@ const routes: RouteInfo[] = [
   {
     path: "/user/:id",
     page: User
+  },
+  {
+    path: "/detail/:id",
+    page: Detail
   },
   {
     path: "/publish",
