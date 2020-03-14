@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from "react";
 import { BasePage } from "./common/base-page";
+import dynamicLoad from "./components/dynamic-page";
 import About from "./pages/About";
 import Detail from "./pages/Detail";
 import ErrorPage from "./pages/Error";
 import GettingStart from "./pages/GettingStart";
 import Index from "./pages/Index";
-import Publish from "./pages/Publish";
 import User from "./pages/User";
 
 export interface RouteInfo {
@@ -43,7 +43,7 @@ const routes: RouteInfo[] = [
   },
   {
     path: "/publish",
-    page: Publish
+    component: dynamicLoad(() => import("./pages/Publish"))
   },
   {
     path: "*",

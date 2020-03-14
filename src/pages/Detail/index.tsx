@@ -1,6 +1,5 @@
 import React from "react";
 import { match, useHistory } from "react-router";
-import { useToasts } from "react-toast-notifications";
 import { BasePage } from "../../common/base-page";
 import { useUserData } from "../../common/data-provider/user";
 import GlobalData from "../../common/global";
@@ -27,7 +26,6 @@ const Detail: BasePage<DetailProps> = {
   page(props) {
     const { topic, replies } = props;
     const history = useHistory();
-    const toast = useToasts();
     const user = useUserData();
 
     if (!topic) {
