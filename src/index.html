@@ -6,9 +6,14 @@
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon" />
     <title>${page_title}</title>
     <link rel="stylesheet" href="./styles/app.less" />
+    <style>
+      #app {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <div id="app">${content}</div>
-    <script async src="./index.tsx"></script>
+    <script src="./index.tsx"></script>
   </body>
 </html>
