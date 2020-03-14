@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, useLocation } from "react-router-dom";
+import { ToastProvider } from "react-toast-notifications";
 import App from "./App";
 import { findRoute, prefetch } from "./common/route-utli";
 
@@ -24,7 +25,9 @@ function AppEntry() {
   return (
     <BrowserRouter>
       <LocalPrefetcher onState={setState} />
-      <App {...state} />
+      <ToastProvider>
+        <App {...state} />
+      </ToastProvider>
     </BrowserRouter>
   );
 }

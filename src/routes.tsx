@@ -4,6 +4,7 @@ import About from "./pages/About";
 import ErrorPage from "./pages/Error";
 import GettingStart from "./pages/GettingStart";
 import Index from "./pages/Index";
+import Publish from "./pages/Publish";
 import User from "./pages/User";
 
 export interface RouteInfo {
@@ -34,6 +35,10 @@ const routes: RouteInfo[] = [
   {
     path: "/user/:id",
     page: User
+  },
+  {
+    path: "/publish",
+    page: Publish
   },
   {
     path: "*",
