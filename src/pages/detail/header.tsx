@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useUserData } from "../../common/data-provider/user";
-import { formatDate } from "../../common/format";
+import { formatFromNow } from "../../common/format";
 import Topic from "../../model/topic";
 
 interface DetailHeaderProps {
@@ -36,7 +36,7 @@ export default function DetailHeader(props: DetailHeaderProps) {
         {topic.is_good && <i className="tag">精华</i>}
         <span className="time">
           <FontAwesomeIcon icon={faClock} color="#bbb" />
-          发布于 {formatDate(topic.created_at)}
+          发布于 {formatFromNow(topic.created_at)}
         </span>
         <span className="icon">
           <FontAwesomeIcon icon={faCommentDots} />

@@ -1,8 +1,8 @@
 import React from "react";
-import { Link, match, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { BasePage } from "../../common/base-page";
 import { usePrefetchData } from "../../common/data-provider/prefetch";
-import GlobalData from "../../common/global";
+import { getAllSearchParams } from "../../common/route-utli";
 import BasePanel from "../../components/base-panel";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
 import Pagination from "../../components/pagination";
@@ -10,6 +10,7 @@ import FriendsLinkPanel from "../../components/panels/friends-link";
 import LoginUserPanel from "../../components/panels/login-user";
 import QQGroupPanel from "../../components/panels/qq-group";
 import Topic from "../../model/topic";
+import { getTopics } from "./helper";
 import "./index.less";
 import TopicItem from "./topic";
 
@@ -30,18 +31,13 @@ interface IndexProps {
 }
 
 const Index: BasePage<IndexProps> = {
-  async prefetch(
-    match: match<{
-      type?: string;
-      page?: string;
-      pageSize?: string;
-    }>
-  ) {
-    const { type = "all", page = "0", pageSize = "10" } = match.params;
-    const {
-      data: { list: topics = [], total }
-    } = await fetch(`${GlobalData.apiBase}/api/topic/${type}`).then(res =>
-      res.json()
+  async prefetch(_, search) {
+    const params = getAllSearchParams(search);
+    const { type = "all", page = "0", pageSize = "10" } = params;
+    const { topics, total } = await getTopics(
+      type,
+      parseInt(page),
+      parseInt(pageSize)
     );
 
     return {
@@ -79,14 +75,14 @@ const Index: BasePage<IndexProps> = {
           header={
             <div className="header">
               {types.map(item => (
-                <Link key={item.type} replace to={`/?type=${item.type}`}>
+                <a key={item.type} href={`/?type=${item.type}`}>
                   <span
                     role="button"
                     className={item.type === type ? "active" : ""}
                   >
                     {item.title}
                   </span>
-                </Link>
+                </a>
               ))}
             </div>
           }

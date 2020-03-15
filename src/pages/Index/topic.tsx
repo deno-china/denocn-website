@@ -6,6 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
+import { formatFromNow } from "../../common/format";
 import Topic from "../../model/topic";
 
 interface TopicItemProps {
@@ -46,13 +47,13 @@ export default function Topic(props: TopicItemProps) {
             </>
           ) : (
             <>
-              <Link className="author" to={`/user/${topic.author_id}`}>
-                {/* {topic.user_nick_name} */}
+              <Link className="author" to={`/user/${topic.author_id.$oid}`}>
+                {topic.author?.nick_name}
               </Link>
               <FontAwesomeIcon icon={faClock} color="#bbb" />
               <span className="time">
                 发布于
-                {topic.created_at}
+                {formatFromNow(topic.created_at)}
               </span>
             </>
           )}

@@ -9,18 +9,22 @@ import { findRoute, prefetch } from "../common/route-utli";
 globalThis.React = React;
 
 interface RenderProps {
-  url?: string;
+  params: { url?: string; search?: string };
   api_base: string;
   data: Object;
 }
 
 export default async function render(props: RenderProps) {
-  const { url = "/", api_base = "", data } = props;
+  const {
+    params: { url = "/", search },
+    api_base = "",
+    data
+  } = props;
 
   GlobalData.apiBase = api_base;
 
   let routeInfo = findRoute(url);
-  let state = { ...data, ...(await prefetch(routeInfo)) };
+  let state = { ...data, ...(await prefetch(routeInfo, search)) };
 
   setPrefetchState(state);
 

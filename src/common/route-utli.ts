@@ -14,14 +14,27 @@ export function findRoute(url: string): MatchRouteInfo | undefined {
   }
 }
 
-export async function prefetch(routeInfo?: MatchRouteInfo): Promise<any> {
+export async function prefetch(
+  routeInfo?: MatchRouteInfo,
+  search?: string
+): Promise<any> {
   let state = {};
   if (routeInfo) {
     const { route, match } = routeInfo;
     const prefetcher = route.page?.prefetch;
     if (prefetcher) {
-      state = (await prefetcher(match)) || {};
+      state = (await prefetcher(match, search)) || {};
     }
   }
   return state;
+}
+
+export function getAllSearchParams(search?: string): any {
+  if (!search) return {};
+  const params = new URLSearchParams(search);
+  const paramsObject: any = {};
+  for (const key of params.keys()) {
+    paramsObject[key] = params.get(key);
+  }
+  return paramsObject;
 }
