@@ -5,6 +5,7 @@ import App from "../app";
 import { setPrefetchState } from "../common/data-provider/prefetch";
 import GlobalData from "../common/global";
 import { findRoute, prefetch } from "../common/route-utli";
+import { getPageMetadata } from "../common/ssr-util";
 
 globalThis.React = React;
 
@@ -33,5 +34,5 @@ export default async function render(props: RenderProps) {
       <App />
     </StaticRouter>
   );
-  return { html, state };
+  return { html, state, meta: getPageMetadata() };
 }

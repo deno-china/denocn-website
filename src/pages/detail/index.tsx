@@ -13,6 +13,7 @@ import AddReply from "./add-reply";
 import DetailHeader from "./header";
 import "./index.less";
 import RepliesPanel from "./replies";
+import { setPageMetadata } from "../../common/ssr-util";
 
 interface DetailPrefetchProps {
   topic?: Topic;
@@ -31,6 +32,8 @@ const Detail: BasePage<DetailPrefetchProps> = {
     } = await fetch(`${GlobalData.apiBase}/api/reply/list/${id}`).then(res =>
       res.json()
     );
+
+    setPageMetadata({ title: `${topic.type}: ${topic.title} - DENO中文社区` });
 
     return { topic, replies };
   },

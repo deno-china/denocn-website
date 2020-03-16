@@ -5,7 +5,10 @@ export default function Footer() {
   return (
     <footer>
       <div className="inner">
-        <a className="source" href="https://github.com/deno-china/website">
+        <a
+          className="source"
+          href="https://github.com/deno-china/denocn-server"
+        >
           源码地址
         </a>
         <div className="desc">
