@@ -4,7 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { formatFromNow } from "../../common/format";
 import BasePanel from "../../components/base-panel";
-import MarkdownContainer from "../../components/markdown/Container";
+import Markdown from "../../components/markdown";
 import Reply from "../../model/reply";
 import "./replies.less";
 
@@ -65,7 +65,7 @@ export default function RepliesPanel(props: RepliesPanelProps) {
       <ul>
         {replies.map((reply, index) => (
           <li key={reply._id.$oid}>
-            <Link to={`/user/${reply.author_id}`}>
+            <Link to={`/user/${reply.author_id.$oid}`}>
               <img
                 className="avatar"
                 src={reply.author?.avatar}
@@ -74,7 +74,7 @@ export default function RepliesPanel(props: RepliesPanelProps) {
             </Link>
             <div className="right">
               <div className="author">
-                <Link to={`/user/${reply.author_id}`}>
+                <Link to={`/user/${reply.author_id.$oid}`}>
                   <span className="name">{getUserName(reply)}</span>
                 </Link>
                 <span className="floor">{index + 1}楼</span>
@@ -87,9 +87,7 @@ export default function RepliesPanel(props: RepliesPanelProps) {
                   <FontAwesomeIcon icon={faReply} />
                 </div>
               </div>
-              <MarkdownContainer>
-                {getRealConent(reply.content, flagMap)}
-              </MarkdownContainer>
+              <Markdown>{getRealConent(reply.content, flagMap)}</Markdown>
             </div>
           </li>
         ))}

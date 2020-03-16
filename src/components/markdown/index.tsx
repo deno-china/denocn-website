@@ -24,12 +24,6 @@ interface MarkdownProps {
 
 export default function Markdown(props: MarkdownProps) {
   const { content, children } = props;
-  // const html = useMemo(() => {
-  //   const source = children || content || "";
-  //   const markedHtml = marked(source, options);
-  //   return markedHtml;
-  // }, [content, children]);
-
   const [html, setHtml] = useState("");
   useLayoutEffect(() => {
     const source = children || content || "";

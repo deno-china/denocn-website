@@ -73,11 +73,6 @@ export default function AddReply(props: AddReplyProps) {
           </>
         }
       >
-        <div className="tips">
-          <FontAwesomeIcon icon={faInfoCircle} />
-          可以粘贴上传图片
-        </div>
-
         <Editor value={content} onChange={setContent} />
       </BasePanel>
     </Spin>

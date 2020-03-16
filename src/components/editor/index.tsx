@@ -1,5 +1,8 @@
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ForEditor from "for-editor";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
+import "./index.less";
 
 interface EditorProps {
   onChange: (value: string) => void;
@@ -8,6 +11,14 @@ interface EditorProps {
 
 export default function Editor(props: EditorProps) {
   const { value, onChange } = props;
+
+  const isMobile = useMemo(() => {
+    if (window && window.screen?.width < 450) {
+      return true;
+    } else {
+      return false;
+    }
+  }, []);
 
   useEffect(() => {
     const listener = (event: ClipboardEvent) => {
@@ -37,5 +48,21 @@ export default function Editor(props: EditorProps) {
     return () => document.removeEventListener("paste", listener);
   }, []);
 
-  return <ForEditor value={value} onChange={onChange} />;
+  return (
+    <div>
+      <div className="editor-tips">
+        <FontAwesomeIcon icon={faInfoCircle} />
+        可以粘贴上传图片
+      </div>
+      {isMobile ? (
+        <textarea
+          className="simple-editor"
+          value={value}
+          onChange={({ target: { value } }) => onChange(value)}
+        />
+      ) : (
+        <ForEditor value={value} onChange={onChange} />
+      )}
+    </div>
+  );
 }

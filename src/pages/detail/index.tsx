@@ -6,7 +6,7 @@ import { useUserData } from "../../common/data-provider/user";
 import GlobalData from "../../common/global";
 import BasePanel from "../../components/base-panel";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
-import MarkdownContainer from "../../components/markdown/Container";
+import Markdown from "../../components/markdown";
 import Reply from "../../model/reply";
 import Topic from "../../model/topic";
 import AddReply from "./add-reply";
@@ -49,7 +49,7 @@ const Detail: BasePage<DetailPrefetchProps> = {
           className="page-detail"
           header={<DetailHeader topic={topic} />}
         >
-          <MarkdownContainer>{topic.content}</MarkdownContainer>
+          <Markdown>{topic.content}</Markdown>
         </BasePanel>
 
         <RepliesPanel replies={replies} />
