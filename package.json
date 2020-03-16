@@ -2,6 +2,7 @@
   "name": "denocn-website",
   "version": "1.0.0",
   "devDependencies": {
+    "@types/antd": "^1.0.0",
     "@types/classnames": "^2.2.10",
     "@types/highlight.js": "^9.12.3",
     "@types/marked": "^0.7.3",
@@ -27,6 +28,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
     "@fortawesome/react-fontawesome": "^0.1.9",
+    "antd": "^4.0.2",
     "classnames": "^2.2.6",
     "dayjs": "^1.8.22",
     "for-editor": "^0.3.5",

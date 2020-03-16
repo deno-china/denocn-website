@@ -1,4 +1,5 @@
 import { ObjectId } from "./base";
+import Reply from "./reply";
 import User from "./user";
 
 export default interface Topic {
@@ -19,7 +20,7 @@ export default interface Topic {
 
   last_reply_id?: ObjectId;
   last_reply_time?: Date;
-  last_reply?: object;
+  last_reply?: Reply;
 
   tags?: string[];
   deleted: boolean;

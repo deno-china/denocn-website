@@ -49,13 +49,9 @@ const Index: BasePage<IndexProps> = {
     };
   },
   page() {
-    const {
-      page = 1,
-      pageSize = 10,
-      total = 0,
-      topics = [],
-      type = "all"
-    } = usePrefetchData(Index);
+    const [
+      { page = 1, pageSize = 10, total = 0, topics = [], type = "all" }
+    ] = usePrefetchData(Index);
     const history = useHistory();
 
     return (

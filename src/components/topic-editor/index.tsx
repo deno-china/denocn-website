@@ -1,5 +1,6 @@
 import { faEdit, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Button from "antd/es/button";
 import React, { useState } from "react";
 import BasePanel from "../base-panel";
 import Editor from "../editor";
@@ -34,9 +35,9 @@ export default function TopicEditor(props: TopicEditorProps) {
             <FontAwesomeIcon className="icon" icon={faEdit} />
             {editorTitle}
           </h4>
-          <button className="btn green" onClick={onSaveClick}>
+          <Button type="primary" className="btn" onClick={onSaveClick}>
             提交
-          </button>
+          </Button>
         </>
       }
     >

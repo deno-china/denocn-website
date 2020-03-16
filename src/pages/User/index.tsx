@@ -22,7 +22,7 @@ const User: BasePage<{
     return { user: data };
   },
   page() {
-    const { user } = usePrefetchData(User);
+    const [{ user }] = usePrefetchData(User);
     return (
       <DefaultLayout
         sides={

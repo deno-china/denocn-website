@@ -36,13 +36,16 @@ export default function Topic(props: TopicItemProps) {
           {topic.is_good && <i className="tag">精华</i>}
           {topic.last_reply_id ? (
             <>
-              <Link className="author" to={`/user/todo`}>
-                {/* {topic.reply_user_name} */}
+              <Link
+                className="author"
+                to={`/user/${topic.last_reply?.author_id.$oid}`}
+              >
+                {topic.last_reply?.author?.nick_name}
               </Link>
               <FontAwesomeIcon icon={faClock} color="#bbb" />
               <span className="time">
                 回复于
-                {topic.last_reply_time}
+                {formatFromNow(topic.last_reply?.created_at)}
               </span>
             </>
           ) : (
