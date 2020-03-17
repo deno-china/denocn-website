@@ -1,13 +1,12 @@
+import message from "antd/es/message";
 import React, { useCallback } from "react";
 import { useHistory } from "react-router";
-import { useToasts } from "react-toast-notifications";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
 import TopicEditor from "../../components/topic-editor";
 import Topic from "../../model/topic";
 
 export default function Publish() {
   const history = useHistory();
-  const toast = useToasts();
 
   const onSave = useCallback(async params => {
     const { msg, success, data } = await fetch("/api/topic/add", {
@@ -17,14 +16,11 @@ export default function Publish() {
     }).then(res => res.json());
 
     if (success) {
-      toast.addToast("发表成功", {
-        appearance: "success",
-        autoDismiss: true
-      });
+      message.success("发表成功");
       const topic = data as Topic;
       history.push(`/detail/${topic._id.$oid}`);
     } else {
-      toast.addToast(msg, { appearance: "error", autoDismiss: true });
+      message.error(msg);
     }
   }, []);
 

@@ -1,11 +1,11 @@
-import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import Pagination from "antd/es/pagination";
+import React, { ReactElement } from "react";
+import { useHistory } from "react-router-dom";
 import { BasePage } from "../../common/base-page";
 import { usePrefetchData } from "../../common/data-provider/prefetch";
 import { getAllSearchParams } from "../../common/route-utli";
 import BasePanel from "../../components/base-panel";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
-import Pagination from "../../components/pagination";
 import FriendsLinkPanel from "../../components/panels/friends-link";
 import LoginUserPanel from "../../components/panels/login-user";
 import QQGroupPanel from "../../components/panels/qq-group";
@@ -88,12 +88,16 @@ const Index: BasePage<IndexProps> = {
               <TopicItem topic={topic} key={topic._id.$oid} />
             ))}
           </ul>
+
           <Pagination
-            page={page}
+            current={page}
             total={total}
-            size={pageSize}
-            onChange={(page, size) => {
-              history.replace(`/?type=${type}&page=${page}?pageSize=${size}`);
+            hideOnSinglePage
+            pageSize={pageSize}
+            itemRender={(page, type, el) => {
+              return React.cloneElement(el as ReactElement, {
+                href: `/?type=${type}&page=${page}&pageSize=${pageSize}`
+              });
             }}
           />
         </BasePanel>

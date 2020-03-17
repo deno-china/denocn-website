@@ -1,10 +1,12 @@
-import { faEdit, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "antd/es/button";
 import React, { useState } from "react";
 import BasePanel from "../base-panel";
-import Editor from "../editor";
+import dynamicLoad from "../dynamic-page";
 import "./index.less";
+
+const Editor = dynamicLoad(() => import("../../components/editor"));
 
 interface TopicEditorProps {
   editorTitle: string;

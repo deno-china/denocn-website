@@ -20,7 +20,7 @@ export default function LoginUserPanel() {
   }
   return (
     <BasePanel className="panel-user-info" header="Deno 开源技术社区">
-      <p>您可以</p>
+      <span style={{ marginRight: 10 }}>您可以</span>
       <a className="btn green" href="/api/user/login">
         通过Github登录
       </a>
