@@ -1,5 +1,7 @@
 interface PageMetadata {
   title?: string;
+  description?: string;
+  keywords?: string;
 }
 
 let pageMetadata: PageMetadata = {};

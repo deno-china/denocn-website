@@ -4,6 +4,7 @@ import { BasePage } from "../../common/base-page";
 import { usePrefetchData } from "../../common/data-provider/prefetch";
 import { useUserData } from "../../common/data-provider/user";
 import GlobalData from "../../common/global";
+import { setPageMetadata } from "../../common/ssr-util";
 import BasePanel from "../../components/base-panel";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
 import Markdown from "../../components/markdown";
@@ -13,7 +14,6 @@ import AddReply from "./add-reply";
 import DetailHeader from "./header";
 import "./index.less";
 import RepliesPanel from "./replies";
-import { setPageMetadata } from "../../common/ssr-util";
 
 interface DetailPrefetchProps {
   topic?: Topic;
@@ -39,7 +39,7 @@ const Detail: BasePage<DetailPrefetchProps> = {
   },
   page() {
     const [{ topic, replies = [] }, reload] = usePrefetchData(Detail);
-    const user = useUserData();
+    const [user] = useUserData();
 
     if (!topic) {
       return null;

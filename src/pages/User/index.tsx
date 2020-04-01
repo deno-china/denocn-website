@@ -4,6 +4,7 @@ import { match } from "react-router";
 import { BasePage } from "../../common/base-page";
 import { usePrefetchData } from "../../common/data-provider/prefetch";
 import GlobalData from "../../common/global";
+import { setPageMetadata } from "../../common/ssr-util";
 import BasePanel from "../../components/base-panel";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
 import FriendsLinkPanel from "../../components/panels/friends-link";
@@ -23,6 +24,10 @@ const User: BasePage<{
   },
   page() {
     const [{ user }] = usePrefetchData(User);
+    setPageMetadata({
+      title: `用户：${user?.nick_name || user?.name} - Deno中文社区`
+    });
+
     return (
       <DefaultLayout
         sides={

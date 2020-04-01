@@ -1,9 +1,9 @@
 import Pagination from "antd/es/pagination";
 import React, { ReactElement } from "react";
-import { useHistory } from "react-router-dom";
 import { BasePage } from "../../common/base-page";
 import { usePrefetchData } from "../../common/data-provider/prefetch";
 import { getAllSearchParams } from "../../common/route-utli";
+import { setPageMetadata } from "../../common/ssr-util";
 import BasePanel from "../../components/base-panel";
 import DefaultLayout from "../../components/layouts/DefaultLayout";
 import FriendsLinkPanel from "../../components/panels/friends-link";
@@ -26,33 +26,33 @@ interface IndexProps {
   type?: string;
   topics?: Topic[];
   page?: number;
-  pageSize?: number;
+  size?: number;
   total?: number;
 }
 
 const Index: BasePage<IndexProps> = {
   async prefetch(_, search) {
     const params = getAllSearchParams(search);
-    const { type = "all", page = "0", pageSize = "10" } = params;
+    const { type = "all", page = "1", size = "10" } = params;
     const { topics, total } = await getTopics(
       type,
       parseInt(page),
-      parseInt(pageSize)
+      parseInt(size)
     );
 
     return {
       topics,
       type,
       page: parseInt(page),
-      pageSize: parseInt(pageSize),
+      size: parseInt(size),
       total
     };
   },
   page() {
+    setPageMetadata({ title: "首页 - Deno中文社区" });
     const [
-      { page = 1, pageSize = 10, total = 0, topics = [], type = "all" }
+      { page = 1, size = 10, total = 0, topics = [], type = "all" }
     ] = usePrefetchData(Index);
-    const history = useHistory();
 
     return (
       <DefaultLayout
@@ -93,10 +93,10 @@ const Index: BasePage<IndexProps> = {
             current={page}
             total={total}
             hideOnSinglePage
-            pageSize={pageSize}
-            itemRender={(page, type, el) => {
+            pageSize={size}
+            itemRender={(page, _, el) => {
               return React.cloneElement(el as ReactElement, {
-                href: `/?type=${type}&page=${page}&pageSize=${pageSize}`
+                href: `/?type=${type}&page=${page}&size=${size}`
               });
             }}
           />
